@@ -1,0 +1,28 @@
+Package: amplysis
+Type: Package
+Title: Analysis Tools for 16S Amplicon Sequencing Data
+Version: 1.0.0
+Date/Publication: 2024-08-16
+Authors@R: c(person("Ziming", "Su", , "szm1027170042@outlook.com", role = c("aut", "cre"), comment = c(ORCID = "0009-0008-0203-1106")), 
+             person("Xinyu", "Zhang", , "xinyuZhang0221@163.com", role = c("aut"), comment = c(ORCID = "0009-0008-2909-0384")), 
+             person("Yaqing", "Liu", , "yaqing.liu@gxu.edu.cn", role = c("aut", "cph"), comment = c(ORCID = "0000-0003-2841-9551"))
+             )
+Author: Ziming Su [aut, cre], Xinyu Zhang [aut], Yaqing Liu [aut, cre]
+Maintainer: Ziming Su <szm1027170042@outlook.com>
+Description: A series of analytical, statistical, and plotting methods in 16S rRNA gene amplicon sequencing data. These methods are used for data preprocessing, microbial composition analysis, alpha diversity analysis, beta diversity analysis, differential analysis, correlation and network analysis, among others.
+URL: https://github.com/min-perilla/amplysis
+License: GPL (>= 3) + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+LazyData: true
+biocViews:
+Imports: agricolae, ape, Biostrings, dplyr, forcats, ggplot2, ggrepel,
+        ggvenn, igraph, phyloseq, picante, R6, readr, readxl, rlang,
+        rstudioapi, stringr, tidyr, vegan, VennDiagram
+Suggests: bit64, circlize, ggraph, grDevices, pheatmap, purrr, remotes,
+        tidygraph, UpSetR
+Repository: CRAN
+NeedsCompilation: no
+Packaged: 2024-08-18 12:47:17 UTC; szm10
