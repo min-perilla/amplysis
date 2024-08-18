@@ -4,6 +4,7 @@ A series of analytical, statistical, and plotting methods in 16S rRNA gene ampli
 
 # Install amplysis
 install the latest development version from Github.
-# If devtools package is not installed, first install it
+
+If devtools package is not installed, first install it
 install.packages("devtools")
 devtools::install_github("min-perilla/amplysis")
