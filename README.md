@@ -92,42 +92,52 @@ stackbar_plot(data_sta_g, tax_cla = "genus", title_legend = "Top 20 Genera")
 
 # 弦图（门水平） | Chord diagram (Phylum level)
 data_chord = chord(otu, metadata, tax, tax_cla = "phylum", group = "group2", row_n = 8)
+# 可视化 | Visualization
 chord_plot(data_chord)
 
 # 韦恩图 | Venn diagram
 data_venn = venn(otu, metadata, group = "group2")
+# 可视化 | Visualization
 venn_plot(data_venn)
 
 # 集合图 | Upset plot
 data_upset = Upset(otu, metadata, group = "group2")
+# 可视化 | Visualization
 Upset_plot(data_upset)
 
 # 箱线图（Alpha 多样性分析） | Boxplot (Alpha diversity analysis)
 data_alpha = alpha(otu, metadata, group = "group2", tree = tree)
+# 可视化 | Visualization
 alpha_plot(data_alpha)
 
 # PCA | Principal Component Analysis (PCA)
 data_pca = pca(otu, metadata, group = "group2")
+# 可视化 | Visualization
 pca_plot(data_pca)
 
 # PCoA | Principal Coordinates Analysis (PCoA)
 data_pcoa = pcoa(otu, metadata, group = "group2")
+# 可视化 | Visualization
 pcoa_plot(data_pcoa)
 
 # NMDS | Non-metric Multidimensional Scaling (NMDS)
 data_nmds = nmds(otu, metadata, group = "group2")
+# 可视化 | Visualization
 nmds_plot(data_nmds)
 
 # RDA | Redundancy Analysis (RDA)
 data_rda = RDA(otu, env, metadata, group = "group2")
+# 可视化 | Visualization
 RDA_plot(data_rda)
 
 # CCA | Canonical Correspondence Analysis (CCA)
 data_cca = CCA(otu, env, metadata, group = "group2")
+# 可视化 | Visualization
 CCA_plot(data_cca)
 
 # 热图 | Heatmap
 data_heatmap = heatmap(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 30)
+# 可视化 | Visualization
 heatmap_plot(data_heatmap, fontsize_col = 14, file_height = 10, file_width = 12)
 
 # 共现性网络分析 | Co-occurrence network analysis
