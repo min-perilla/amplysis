@@ -145,8 +145,10 @@ data_net = network(otu, tax, metadata, tax_cla = "genus")
 data_net
 ```
 
-部分示例图：
-![示例图](https://github.com/user-attachments/assets/4c5ecb35-a912-4c53-b645-b8deb79d1bcd)
+Partial example figures:
+> 部分示例图：
+![image](https://github.com/user-attachments/assets/1a2e6ba6-6e1f-4846-97f7-81332c1d14b9)
+
 
 ## Maintainers  项目主要负责人
 
