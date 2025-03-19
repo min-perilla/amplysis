@@ -3,9 +3,9 @@
 
 > **16S 扩增子测序数据分析 R 包**
 
-A series of analytical, statistical, and plotting methods in 16S rRNA gene amplicon sequencing data. These methods are used for data preprocessing, microbial composition analysis, alpha diversity analysis, beta diversity analysis, differential analysis, correlation and network analysis, among others.
+An R package for 16S rRNA gene amplicon sequencing data that integrates data preprocessing, analysis, and visualization methods. These methods include microbial composition analysis, α-diversity analysis, β-diversity analysis, differential analysis, correlation analysis, and network analysis, among others.
 
-> 一系列用于 16S rRNA 基因扩增子测序数据的分析、统计和绘图方法。这些方法用于数据预处理、微生物组成分析、α 多样性分析、β 多样性分析、差异分析、关联分析和网络分析等。
+> 一个用于 16S rRNA 基因扩增子测序数据，集成了数据预处理、分析与可视化方法的 R 包。这些方法包括微生物组成分析、α 多样性分析、β 多样性分析、差异分析、关联分析和网络分析等。
 
 ## Background  背景
 
