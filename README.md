@@ -98,7 +98,7 @@ data_venn = venn(otu, metadata, group = "group2")
 venn_plot(data_venn)
 
 # 集合图 | Upset plot
-data_upset = Upset(otu, metadata = , group = "group")
+data_upset = Upset(otu, metadata, group = "group2")
 Upset_plot(data_upset)
 
 # 箱线图（Alpha 多样性分析） | Boxplot (Alpha diversity analysis)
