@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/00910def-de2b-4b88-8fd4-2d2e3498d7ff)# amplysis 1.3.0
+# amplysis 1.3.0
 **An R package for rapid analysis of 16S amplicon sequencing data**
 
 > **16S 扩增子测序数据分析 R 包**
@@ -145,6 +145,8 @@ data_net = network(otu, tax, metadata, tax_cla = "genus")
 data_net
 ```
 
+部分示例图：
+![示例图](https://github.com/user-attachments/assets/4c5ecb35-a912-4c53-b645-b8deb79d1bcd)
 
 ## Maintainers  项目主要负责人
 
