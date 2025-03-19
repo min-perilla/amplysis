@@ -145,7 +145,7 @@ data_net
 
 ## License  许可证
 
-The project is licensed under **GPL (>= 3)**. For more details, please refer to the **[LICENSE.md](https://github.com/min-perilla/amplysis/blob/main/LICENSE.md)** file.
+The project is licensed under **GPL (>= 3)**. For more details, please refer to the **[LICENSE.md](https://github.com/min-perilla/amplysis/blob/main/LICENSE)** file.
 
 > 该项目采用 **GPL (>= 3)** 许可证，详情请参阅 **[LICENSE.md](https://github.com/min-perilla/amplysis/blob/main/LICENSE.md)** 文件。
 
