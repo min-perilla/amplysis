@@ -1,4 +1,4 @@
-# amplysis 1.3.0
+![image](https://github.com/user-attachments/assets/00910def-de2b-4b88-8fd4-2d2e3498d7ff)# amplysis 1.3.0
 **An R package for rapid analysis of 16S amplicon sequencing data**
 
 > **16S 扩增子测序数据分析 R 包**
@@ -127,8 +127,8 @@ data_cca = CCA(otu, env, metadata, group = "group2")
 CCA_plot(data_cca)
 
 # 热图 | Heatmap
-data_heatmap = heatmap(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2")
-heatmap_plot(data_heatmap)
+data_heatmap = heatmap(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 30)
+heatmap_plot(data_heatmap, fontsize_col = 14, file_height = 10, file_width = 12)
 
 # 共现性网络分析 | Co-occurrence network analysis
 data_net = network(otu, tax, metadata, tax_cla = "genus")
