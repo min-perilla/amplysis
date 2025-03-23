@@ -7,13 +7,13 @@ An R package for 16S rRNA gene amplicon sequencing data that integrates data pre
 
 > 一个用于 16S rRNA 基因扩增子测序数据，集成了数据预处理、分析与可视化方法的 R 包。这些方法包括微生物组成分析、α 多样性分析、β 多样性分析、差异分析、关联分析和网络分析等。
 
-## Background  背景
+## Background 背景
 
 The rapid development of bioinformatics tools has enabled researchers to perform complex 16S rRNA gene amplicon sequencing analysis. However, for those without a bioinformatics background, existing tools and R packages can be complex and difficult to use. The amplysis project was created to address this issue, providing an accessible solution for researchers to easily conduct data analysis. 
 
 > 生物信息学工具的快速发展，使得研究者能够进行复杂的 16S rRNA 基因扩增子测序数据分析。然而，对于缺乏生物信息学背景的研究者来说，现有的工具和 R 包操作复杂，使用门槛较高。amplysis 集合 R 包项目应运而生，旨在为研究者提供一个易于使用的数据分析解决方案。
 
-## Install  安装
+## Install 安装
 
 ### Install from CRAN
 
@@ -33,13 +33,18 @@ install.packages("amplysis")
 
 > 从 Github 上安装最新版本（推荐）
 
+安装 R 包 `devtools`：
+
 ```
 install.packages("devtools")
 library(devtools)
+```
+通过 `devtools` 安装 R 包 `amplysis`：
+```
 devtools::install_github("min-perilla/amplysis")
 ```
 
-## Usage  使用方法
+## Usage 使用方法
 [示例数据下载链接](https://github.com/min-perilla/amplysis/releases/download/Latest/example.data.zip)
 ```
 # 清除所有变量 | Clear all variables
@@ -152,15 +157,15 @@ Partial example figures:
 ![image](https://github.com/user-attachments/assets/1a2e6ba6-6e1f-4846-97f7-81332c1d14b9)
 
 
-## Maintainers  项目主要负责人
+## Maintainers 项目主要负责人
 
 [@min-perilla](https://github.com/min-perilla)
 
-## Contributing  贡献
+## Contributing 贡献
 [@min-perilla](https://github.com/min-perilla)
 
 
-## License  许可证
+## License 许可证
 
 The project is licensed under **GPL (>= 3)**. For more details, please refer to the **[LICENSE](https://github.com/min-perilla/amplysis/blob/main/LICENSE)** file.
 
