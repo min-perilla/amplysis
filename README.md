@@ -35,6 +35,7 @@ install.packages("amplysis")
 
 ```
 install.packages("devtools")
+library(devtools)
 devtools::install_github("min-perilla/amplysis")
 ```
 
