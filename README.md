@@ -1,4 +1,11 @@
-# amplysis 1.3.0
+# amplysis
+
+![version](https://img.shields.io/badge/version-1.3.0-blue.svg)
+![license](https://img.shields.io/badge/license-GPL--3.0-green.svg)
+![platform](https://img.shields.io/badge/platform-R-75AADB.svg)
+![status](https://img.shields.io/badge/status-active-brightgreen.svg)
+![CRAN](https://img.shields.io/badge/CRAN-Submitting-orange.svg)
+
 **An R package for rapid analysis of 16S amplicon sequencing data**
 
 > **16S 扩增子测序数据分析 R 包**
