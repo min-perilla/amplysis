@@ -1,7 +1,25 @@
 #' @title Data Rarefaction
 #'
 #' @description
-#' Use the "rrarefy" function from the "vegan" package or the "rarefy_even_depth" function from the "phyloseq" package for data rarefaction.
+#' Use the "rrarefy" function from the "vegan" package or the "rarefy_even_depth"
+#' function from the "phyloseq" package for data rarefaction.
+#'
+#' In the phyloseq package, the rarefy_even_depth() function allows both
+#' replacement sampling and non-replacement sampling. In replacement sampling,
+#' each time an element is selected from the sample pool, it is returned, keeping
+#' the pool unchanged. As a result, some elements may be selected multiple times.
+#' This method can speed up computation and reduce memory usage, especially when
+#' working with large datasets. However, it may lead to some OTU or ASV counts
+#' exceeding their original values, which can affect the accuracy of the analysis.
+#' In contrast, non-replacement sampling removes the selected sample after each draw,
+#' ensuring that each sample is selected only once. This ensures that OTU/ASV counts
+#' do not exceed their original values.
+#'
+#' The rarefy_even_depth() function in phyloseq uses replacement sampling by
+#' default (parameter replace = TRUE), which may slightly affect the final
+#' analysis results. To ensure accuracy, the data_rarefy() function in the
+#' amplysis package performs data rarefaction using non-replacement sampling
+#' (parameter replace = FALSE).
 #'
 #' @param file (data.frame) OTU data frame
 #' @param id_col (integer) The OTU_ID column is in which column, defaulting to 0 means there is no OTU_ID column, and the data is already numeric.

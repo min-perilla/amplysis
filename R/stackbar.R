@@ -191,7 +191,13 @@ stackbar <- function(otu, tax, metadata, id_col = 1, tax_cla = "phylum",
     dplyr::ungroup()
 
   row_numbers_others <- which(otu4[, 1] == "others")
-  otu4 <- rbind(otu4[-row_numbers_others, ], otu4[row_numbers_others, ])
+
+  # Add a conditional check: if row_numbers_others is 0, it means there is no "others" category, so skip the following code
+  # If "others" is found, move it to the last row
+  if (length(row_numbers_others) > 0) {
+    otu4 <- rbind(otu4[-row_numbers_others, ], otu4[row_numbers_others, ])
+    cat("otu4 ---> DONE\n")
+  }
   cat("otu4 ---> DONE\n")
   ##
 

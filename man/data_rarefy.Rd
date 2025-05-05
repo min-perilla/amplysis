@@ -43,7 +43,25 @@ Return an OTU table that has been rarefied,
 or return a list containing a rarefied OTU table and an aligned taxonomy table after rarefaction.
 }
 \description{
-Use the "rrarefy" function from the "vegan" package or the "rarefy_even_depth" function from the "phyloseq" package for data rarefaction.
+Use the "rrarefy" function from the "vegan" package or the "rarefy_even_depth"
+function from the "phyloseq" package for data rarefaction.
+
+In the phyloseq package, the rarefy_even_depth() function allows both
+replacement sampling and non-replacement sampling. In replacement sampling,
+each time an element is selected from the sample pool, it is returned, keeping
+the pool unchanged. As a result, some elements may be selected multiple times.
+This method can speed up computation and reduce memory usage, especially when
+working with large datasets. However, it may lead to some OTU or ASV counts
+exceeding their original values, which can affect the accuracy of the analysis.
+In contrast, non-replacement sampling removes the selected sample after each draw,
+ensuring that each sample is selected only once. This ensures that OTU/ASV counts
+do not exceed their original values.
+
+The rarefy_even_depth() function in phyloseq uses replacement sampling by
+default (parameter replace = TRUE), which may slightly affect the final
+analysis results. To ensure accuracy, the data_rarefy() function in the
+amplysis package performs data rarefaction using non-replacement sampling
+(parameter replace = FALSE).
 }
 \examples{
 \dontrun{data_rarefy(file = otu_table)}

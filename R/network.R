@@ -55,7 +55,7 @@
 #' @param .r (numeric) Correlation. Default is 0.6, meaning nodes with an
 #' r-value > 0.6 will be retained.
 #' @param .p (numeric) Significance test p-value. Default is 0.05, meaning nodes with
-#' p-values less than 0.05 will be retained.
+#' p-values < 0.05 will be retained.
 #' @param fileName_edge (character) Edge Filename.
 #' @param fileName_node (character) Node Filename.
 #'
@@ -474,7 +474,7 @@ network = function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
   utils::write.csv(x = edge, file = fileName_edge, row.names = F)
   names(node2)[names(node2) == "name"] <- "ID"
   utils::write.csv(x = node2, file = fileName_node,  row.names = F)
-  cat("\033[32m--- Please use the `network_plot()` function for visualization. ---\n\033[0m")
+  # cat("\033[32m--- Please use the `network_plot()` function for visualization. ---\n\033[0m")
 
 
   ##

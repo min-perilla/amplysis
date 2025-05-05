@@ -91,7 +91,7 @@ stackbar_plot <- function(data, color_scheme = NULL, tax_cla, x_group = "group",
          bar_type = "fill", bar_width = 0.7, grid_line = F,
          size_point_legend = 0.75, spacing_legend_point = 0.75,
          spacing_legend_title = 0.5, legend_ncol = 1,
-         angle_x = 0, angle_hjust = 1, angle_vjust = 1,
+         angle_x = 0, angle_hjust = 0.5, angle_vjust = 0.5,
 
          title = NULL, title_x = "Groups", title_y = NULL, title_legend = NULL,
 

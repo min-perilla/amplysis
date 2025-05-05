@@ -72,7 +72,11 @@ chord = function(otu, metadata, tax, id_col = 1, tax_cla = "genus",
     dplyr::ungroup()
 
   row_numbers_others <- which(otu_tax4[, 1] == "others")
-  otu_tax4 <- rbind(otu_tax4[-row_numbers_others, ], otu_tax4[row_numbers_others, ])
+  # Add a conditional check: if row_numbers_others is 0, it means there is no "others" category, so skip the following code
+  # If "others" is found, move it to the last row
+  if (length(row_numbers_others) > 0) {
+    otu_tax4 <- rbind(otu_tax4[-row_numbers_others, ], otu_tax4[row_numbers_others, ])
+  }
 
 
   ##

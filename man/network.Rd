@@ -81,7 +81,7 @@ A list of all methods:
 r-value > 0.6 will be retained.}
 
 \item{.p}{(numeric) Significance test p-value. Default is 0.05, meaning nodes with
-p-values less than 0.05 will be retained.}
+p-values < 0.05 will be retained.}
 
 \item{fileName_edge}{(character) Edge Filename.}
 
