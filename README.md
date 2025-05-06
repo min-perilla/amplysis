@@ -23,22 +23,8 @@ The rapid development of bioinformatics tools has enabled researchers to perform
 <br>
 
 ## Install 安装
-### Install from CRAN
-> 从 CRAN 安装
-
-> [!IMPORTANT]
->
-> Submitting to CRAN, stay tuned...
->
-> 正在向 CRAN 提交中，敬请期待...
-
-```
-install.packages("amplysis")
-```
-
-### Install the latest version from GitHub (recommended)
-
-> 从 Github 上安装最新版本（推荐）
+### 1. Install the latest version from GitHub (recommended)
+> 1. 从 Github 上安装最新版本（推荐）
 
 安装 R 包 `devtools`：
 
@@ -49,6 +35,35 @@ library(devtools)
 通过 `devtools` 安装 R 包 `amplysis`：
 ```
 devtools::install_github("min-perilla/amplysis")
+```
+
+### 2. Install from a local `.tar.gz` source package
+> 2. 本地 `.tar.gz` 源码包安装
+
+Go to the [Releases page](https://github.com/min-perilla/amplysis/releases) to download the latest `amplysis_*.tar.gz` release package and note its save location. Then use the following code in R to install the local source package (replace the path with your actual file location)
+> 前往 [Releases 页面](https://github.com/min-perilla/amplysis/releases) 下载最新发布的 `amplysis_*.tar.gz` 安装包，并记住其保存路径。使用以下代码在 R 中安装本地源码包（请将路径替换为你实际的文件位置）
+
+Windows:
+```
+install.packages("C:/path/to/your/amplysis_X.X.X.tar.gz", repos = NULL, type = "source")
+```
+
+macOS:
+```
+install.packages("/Users/path/to/your/amplysis_X.X.X.tar.gz", repos = NULL, type = "source")
+```
+
+### 3. Install from CRAN
+> 3. 从 CRAN 安装
+
+> [!IMPORTANT]
+>
+> Submitting to CRAN, stay tuned...
+>
+> 正在向 CRAN 提交中，敬请期待...
+
+```
+install.packages("amplysis")
 ```
 
 <br>
