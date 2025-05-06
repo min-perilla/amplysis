@@ -221,8 +221,8 @@ The `read_data()` function supports reading `JSON` format `.biom` files. If you 
    ```
 <br>
 
-### Warning When Reading `.biom` Files in `HDF5` Format
-< 关于读取 `HDF5` 格式的 `.biom` 文件的警告
+#### Warning When Reading `.biom` Files in `HDF5` Format
+> 关于读取 `HDF5` 格式的 `.biom` 文件的警告
 
 If you attempt to read an `HDF5`-format `.biom` file (such as one exported from `QIIME 2`), the `read_data()` function may produce the following warning:
 > 如果你尝试读取 `HDF5` 格式的 `.biom` 文件（如 `QIIME 2` 导出的 `.biom` 文件），`read_data()` 函数可能会出现以下警告：
