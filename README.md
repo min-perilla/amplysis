@@ -43,12 +43,14 @@ devtools::install_github("min-perilla/amplysis")
 Go to the [Releases page](https://github.com/min-perilla/amplysis/releases) to download the latest `amplysis_*.tar.gz` release package and note its save location. Then use the following code in R to install the local source package (replace the path with your actual file location)
 > 前往 [Releases 页面](https://github.com/min-perilla/amplysis/releases) 下载最新发布的 `amplysis_*.tar.gz` 安装包，并记住其保存路径。使用以下代码在 R 中安装本地源码包（请将路径替换为你实际的文件位置）
 
-Windows:
+Windows users can install by entering the following code in RStudio:
+> Windows 用户在 RStudio 中输入下列代码进行安装:
 ```
 install.packages("C:/path/to/your/amplysis_X.X.X.tar.gz", repos = NULL, type = "source")
 ```
 
-macOS:
+macOS users can install by entering the following code in RStudio:
+> macOS 用户在 RStudio 中输入下列代码进行安装:
 ```
 install.packages("/Users/path/to/your/amplysis_X.X.X.tar.gz", repos = NULL, type = "source")
 ```
