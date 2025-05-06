@@ -1,5 +1,5 @@
 # amplysis
-![version](https://img.shields.io/badge/version-1.3.0-blue.svg)
+![version](https://img.shields.io/badge/version-1.3.2-blue.svg)
 ![license](https://img.shields.io/badge/license-GPL--3.0-green.svg)
 ![platform](https://img.shields.io/badge/platform-R-75AADB.svg)
 ![status](https://img.shields.io/badge/status-active-brightgreen.svg)
