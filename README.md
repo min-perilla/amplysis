@@ -168,7 +168,78 @@ Partial example figures:
 <br>
 
 ## Additional Information 补充说明
-### About the data_rarefy() function 
+### 1. Using `read_data()` to Read `.biom` Files
+> 使用函数 `data_rarefy()` 读取 .biom 文件
+
+The `read_data()` function supports reading `JSON` format `.biom` files. If you already have a `.biom` file (such as one exported from `QIIME 2`, which may be in `HDF5` format), you can convert it to `JSON` format using the following methods.
+> `read_data()` 函数支持读取 `JSON` 格式的 `.biom` 文件。如果你已经有一个 `.biom` 文件（如 `QIIME 2` 导出的 `.biom` 文件，可能是 `HDF5` 格式），你可以通过以下方法将其转换为 `JSON` 格式。
+
+#### Windows：
+
+1. Check if `biom` is already installed:
+> 1. 检查 `biom` 是否已经安装：
+   ```bash
+   biom --version
+   ```
+
+   If not installed, use the following command to install the `biom-format` tool:
+   > 如果未安装，可以使用以下命令安装 `biom-format` 工具：
+
+   ```bash
+   pip install biom-format
+   ```
+
+2. Convert the `HDF5` format `.biom` file to `JSON` format:
+> 2. 使用以下命令将 `HDF5` 格式的 `.biom` 文件转换为 `JSON` 格式：
+
+   ```bash
+   biom convert -i input_table.biom -o output_table_json.biom --to-json --table-type "OTU table"
+   ```
+<br>
+
+#### macOS：
+
+1. Check if `biom` is already installed:
+> 1. 检查 `biom` 是否已经安装：
+
+   ```bash
+   biom --version
+   ```
+
+   If not installed, use the following command to install the `biom-format` tool:
+   > 如果未安装，可以使用以下命令安装 `biom-format` 工具：
+
+   ```bash
+   pip install biom-format
+   ```
+
+2. Convert the `HDF5` format `.biom` file to `JSON` format:
+> 2. 使用以下命令将 `HDF5` 格式的 `.biom` 文件转换为 JSON 格式：
+
+   ```bash
+   biom convert -i input_table.biom -o output_table_json.biom --to-json --table-type "OTU table"
+   ```
+<br>
+
+### Warning When Reading `.biom` Files in `HDF5` Format
+< 关于读取 `HDF5` 格式的 `.biom` 文件的警告
+
+If you attempt to read an `HDF5`-format `.biom` file (such as one exported from `QIIME 2`), the `read_data()` function may produce the following warning:
+> 如果你尝试读取 `HDF5` 格式的 `.biom` 文件（如 `QIIME 2` 导出的 `.biom` 文件），`read_data()` 函数可能会出现以下警告：
+
+```R
+Warning messages:
+1: In strsplit(conditionMessage(e), "\n") :
+  unable to translate 'lexical error: invalid char in json text.
+                                       <89>HDF                        (right here) ------^
+' to a wide string
+2: In strsplit(conditionMessage(e), "\n") : input string 1 is invalid
+```
+Although these warnings may appear, the file can still be read correctly. Rest assured, this issue will be resolved in a future update.
+> 虽然会出现这些警告，但文件是可以正常读取的。请放心，未来我们会解决此问题。
+<br>
+
+### 2. About the data_rarefy() function 
 > 关于函数 data_rarefy() 的说明
 
 The R package provides a function `data_rarefy()` for data rarefaction. It integrates the `rrarefy()` function from the `vegan` package or the `rarefy_even_depth()` function from the `phyloseq` package for data rarefaction.  
