@@ -188,8 +188,8 @@ Partial example figures:
 ### 1. Preparation of Data Files
 > 数据文件的准备
 
-Please refer to the example files in the `test data/example data` directory on GitHub to prepare your data accordingly for analysis.
-> 请参考目录 `/test data/example data` 下的示例文件，以相应格式准备好数据文件进行分析。
+Please refer to the example files in the `test data/example data` directory on GitHub to prepare your data accordingly for analysis. For more detailed information about the data files, please refer to this article (DOI will be provided once available).
+> 请参考目录 `/test data/example data` 下的示例文件，以相应格式准备好数据文件进行分析。关于数据文件的更多详细说明，可以参考此文章（DOI 可用后将提供）。
 <br>
 
 ### 2. Using `read_data()` to Read `.biom` Files
