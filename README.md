@@ -168,7 +168,14 @@ Partial example figures:
 <br>
 
 ## Additional Information 补充说明
-### 1. Using `read_data()` to Read `.biom` Files
+### 1. Preparation of Data Files
+> 数据文件的准备
+
+Please refer to the example files in the `test data/example data` directory on GitHub to prepare your data accordingly for analysis.
+> 请参考目录 `/test data/example data` 下的示例文件，以相应格式准备好数据文件进行分析。
+<br>
+
+### 2. Using `read_data()` to Read `.biom` Files
 > 使用函数 `data_rarefy()` 读取 .biom 文件
 
 The `read_data()` function supports reading `JSON` format `.biom` files. If you already have a `.biom` file (such as one exported from `QIIME 2`, which may be in `HDF5` format), you can convert it to `JSON` format using the following methods.
@@ -239,7 +246,7 @@ Although these warnings may appear, the file can still be read correctly. Rest a
 > 虽然会出现这些警告，但文件是可以正常读取的。请放心，未来我们会解决此问题。
 <br>
 
-### 2. About the data_rarefy() function 
+### 3. About the data_rarefy() function 
 > 关于函数 data_rarefy() 的说明
 
 The R package provides a function `data_rarefy()` for data rarefaction. It integrates the `rrarefy()` function from the `vegan` package or the `rarefy_even_depth()` function from the `phyloseq` package for data rarefaction.  
