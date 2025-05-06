@@ -1,0 +1,16 @@
+read_data()函数支持读取 JSON 格式的 .biom 文件，你可以通过以下方式将其转换成 JSON 格式。
+
+Windows：
+方法
+macOS：
+方法
+
+如果你尝试读取 HDF5 格式的 .biom （如 QIIME 2 导出的 .biom 文件），read_data() 函数会警告：
+Warning messages:
+1: In strsplit(conditionMessage(e), "\n") :
+  unable to translate 'lexical error: invalid char in json text.
+                                       <89>HDF                        (right here) ------^
+' to a wide string
+2: In strsplit(conditionMessage(e), "\n") : input string 1 is invalid
+
+但文件是可以正常读取的。请放心，未来我们会解决此问题。

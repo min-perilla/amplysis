@@ -11,7 +11,7 @@ chord(
   id_col = 1,
   tax_cla = "genus",
   group = "group",
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 8,
   digits = 0
 )
@@ -33,13 +33,13 @@ table can be entered, for example tax_cla = 'genus'.}
 \item{group}{(Required, character) Grouping information. please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 
 \item{row_n}{(integer) Preserve the top N taxa (including the Nth) based on
 abundance, while merging taxa with lower abundance into "others".}
 
-\item{digits}{(integer) When the parallel sample method is set to "mean," the
+\item{digits}{(integer) When the replicate sample method is set to "mean," the
 number of decimal places will default to 0.}
 }
 \value{
@@ -52,7 +52,7 @@ diagram.
 \examples{
 \dontrun{
 test = chord(otu = otu, metadata = metadata, tax = tax, id_col = 1,
-tax_cla = "genus", group = "group", parallel_method = "mean", row_n = 8,
+tax_cla = "genus", group = "group", replicate_method = "mean", row_n = 8,
 digits = 0)}
 
 }

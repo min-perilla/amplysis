@@ -1,8 +1,8 @@
 Package: amplysis
 Type: Package
-Title: An R package for rapid analysis of 16S amplicon sequencing data.
+Title: An R package for rapid analysis of 16S amplicon sequencing data
 Version: 1.3.2
-Date/Publication: 2025-05-05
+Date/Publication: 2025-05-06
 Authors@R: c(person("Z.", "Su", email = "Minpilot@outlook.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "")), 
              person("X.", "Zhang", email = "", role = c("aut", "ctb", "cph"), comment = c(ORCID = "")), 
              person("Y.", "Liu", email = "", role = c("aut", "cph", "ctb", "fnd"), comment = c(ORCID = "")),
@@ -14,7 +14,7 @@ Author: Z. Su [aut, cre, cph], X. Zhang [aut, ctb, cph], Y. Liu [aut, cph, ctb, 
 Maintainer: Z. Su <Minpilot@outlook.com>
 Description: A series of analytical, statistical, and plotting methods in 16S rRNA gene amplicon sequencing data. These methods are used for data preprocessing, microbial composition analysis, alpha diversity analysis, beta diversity analysis, differential analysis, correlation and network analysis, among others.
 URL: https://github.com/min-perilla/amplysis
-License: GPL (>= 3)
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 Roxygen: list(markdown = TRUE)

@@ -109,7 +109,7 @@ for visualization.
 \examples{
 \dontrun{
 pcoa1 <- pcoa(otu = otu, metadata = metadata, id_col = 1,group = "group",
-              parallel_method = "none")
+              replicate_method = "none")
 
 pcoa_plot(data = pcoa1,
           color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",

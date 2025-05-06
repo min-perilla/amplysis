@@ -12,7 +12,7 @@ heatmap(
   tax_cla = "genus",
   group1 = "group",
   group2 = NULL,
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 35
 )
 }
@@ -36,7 +36,7 @@ number of the grouping information in the metadata table.}
 column name or column number of the grouping information in the metadata
 table.}
 
-\item{parallel_method}{(character) Parallel sample processing method,
+\item{replicate_method}{(character) replicate sample processing method,
 defaulting to mean. Options: mean (average), sum (summation),
 median (median).}
 
@@ -62,7 +62,7 @@ pheatmap plotting. For quick plotting, you can use the built-in
 \examples{
 \dontrun{
 heatmap(otu = otu, tax = tax, metadata = metadata, id_col = 1,
-group1 = "group", group2 = NULL, tax_cla = "genus", parallel_method = "mean",
+group1 = "group", group2 = NULL, tax_cla = "genus", replicate_method = "mean",
 row_n = 50)}
 
 }

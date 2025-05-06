@@ -12,7 +12,7 @@ network(
   tax_cla = "genus",
   label = "phylum",
   group = "group",
-  parallel_method = "none",
+  replicate_method = "none",
   calc_method = "spearman",
   cluster_method = 1,
   normalize_flag = TRUE,
@@ -41,7 +41,7 @@ from a column name in the taxonomy file, with the default being "phylum".}
 \item{group}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 
 \item{calc_method}{(character) Correlation analysis methods available:
@@ -104,7 +104,7 @@ network(otu, tax, metadata)}
 network(otu, tax, metadata, id_col = 1, .r = 0.6, .p = 0.05)}
 \dontrun{
 network(otu, tax, metadata, id_col = 1, tax_cla = "genus", label = "phylum",
-        group = "group", parallel_method = "mean", calc_method = "spearman",
+        group = "group", replicate_method = "mean", calc_method = "spearman",
         cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05,
         fileName_edge = "edge", fileName_node = "node")}
 

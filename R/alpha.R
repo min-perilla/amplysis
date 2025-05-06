@@ -12,7 +12,7 @@
 #' OTU table, by default, is 1.
 #' @param group (character) Group 1, please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method (character) Sample processing methods for the same group:
+#' @param replicate_method (character) Sample processing methods for the same group:
 #' mean, sum, median, none.
 #' @param tree Phylogenetic tree (rooted tree) file.
 #' @param method Multiple comparison methods, please enter a number from 1 to 7
@@ -38,7 +38,7 @@
 #' @examples
 #' \dontrun{
 #' data <- alpha(otu, metadata, id_col = 1, group = "group",
-#' parallel_method = "mean", tree = tree, method = 1)
+#' replicate_method = "mean", tree = tree, method = 1)
 #' }
 #'
 #' @importFrom agricolae duncan.test HSD.test LSD.test REGW.test scheffe.test
@@ -51,7 +51,7 @@
 #' @importFrom vegan diversity estimateR specnumber
 #'
 alpha <- function(otu, metadata, id_col = 1, group = "group",
-         parallel_method = "none", tree = NULL, method = 1)
+         replicate_method = "none", tree = NULL, method = 1)
 {
   if (!method %in% 1:7) {
     stop("Invalid method. Please enter a number between 1 and 7.\n",
@@ -86,17 +86,17 @@ alpha <- function(otu, metadata, id_col = 1, group = "group",
 
   ## 格式检查
   if ("sample" %in% base::tolower(colnames(metadata)) &&
-      "parallel" %in% base::tolower(colnames(metadata))) {
+      "replicate" %in% base::tolower(colnames(metadata))) {
     cat("metadata --> DONE\n")
   } else {
-    stop("Please ensure that the metadata table contains the `sample` column and the `parallel` column!",
+    stop("Please ensure that the metadata table contains the `sample` column and the `replicate` column!",
          "\nsample: Sample ID (unique)",
-         "\nparallel: Parallel sample identifier")
+         "\nreplicate: replicate sample identifier")
   }
 
 
   ##
-  metadata2 <- metadata[, c("sample", "parallel", group)]
+  metadata2 <- metadata[, c("sample", "replicate", group)]
   na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
   if (any(na_rows)) {
     cat("The following row numbers contain NA values and have been discarded:\n")
@@ -125,24 +125,24 @@ alpha <- function(otu, metadata, id_col = 1, group = "group",
 
   ##
   allowedMethods <- base::tolower(c("mean", "sum", "median", "none"))
-  parallel_method <- base::tolower(parallel_method)
+  replicate_method <- base::tolower(replicate_method)
 
   #
-  if(!parallel_method %in% allowedMethods) {
-    stop("Please enter the correct argument for the parameter 'parallel_method':\n",
-         "Process according to the 'parallel' column in the `metadata` table, ",
-         "\nsamples with the same 'parallel' value are considered parallel samples.\n",
+  if(!replicate_method %in% allowedMethods) {
+    stop("Please enter the correct argument for the parameter 'replicate_method':\n",
+         "Process according to the 'replicate' column in the `metadata` table, ",
+         "\nsamples with the same 'replicate' value are considered replicate samples.\n",
          "`mean`  : Calculate the average\n",
          "`sum`   : Calculate the sum\n",
          "`median`: Calculate the median\n",
-         "`none`  : Do not process parallel samples\n")
+         "`none`  : Do not process replicate samples\n")
   } else {
-    cat("\033[32mParallel parallel_method: `", parallel_method, "`\n\033[30m", sep = "")
+    cat("\033[32mreplicate replicate_method: `", replicate_method, "`\n\033[30m", sep = "")
   }
 
 
   ##
-  if(parallel_method %in% c("mean", "sum", "median")) {
+  if(replicate_method %in% c("mean", "sum", "median")) {
     otu_t <- as.data.frame(t(otu2))
     otu_t_g <- merge(otu_t, metadata2, by.x = "row.names", by.y = "sample",
                      all.x = TRUE, sort = F)
@@ -155,7 +155,7 @@ alpha <- function(otu, metadata, id_col = 1, group = "group",
     #
     otu_t2 <- otu_t %>%
       dplyr::group_by(metadata3[["sample"]]) %>%
-      dplyr::summarize_at(ggplot2::vars(-dplyr::group_cols()), parallel_method)
+      dplyr::summarize_at(ggplot2::vars(-dplyr::group_cols()), replicate_method)
 
     otu_t2 <- as.data.frame(otu_t2)
     row.names(otu_t2) <- otu_t2[, 1]
@@ -173,10 +173,10 @@ alpha <- function(otu, metadata, id_col = 1, group = "group",
     colnames(metadata5) <- c("sample", "group")
 
     #
-  } else if(parallel_method %in% c("none")) {
+  } else if(replicate_method %in% c("none")) {
     otu3 <- otu2
     metadata5 <- metadata2
-    colnames(metadata5) <- c("sample", "parallel", "group")
+    colnames(metadata5) <- c("sample", "replicate", "group")
   }
 
 

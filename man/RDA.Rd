@@ -4,7 +4,7 @@
 \alias{RDA}
 \title{Redundancy Analysis (RDA)}
 \usage{
-RDA(otu, env, metadata, id_col = 1, group = "group", parallel_method = "none")
+RDA(otu, env, metadata, id_col = 1, group = "group", replicate_method = "none")
 }
 \arguments{
 \item{otu}{otu table}
@@ -19,7 +19,7 @@ OTU table, by default, is 1.}
 \item{group}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \value{
@@ -41,7 +41,7 @@ on the Axis Lengths value of DCA1 as follows: (1) If >4.0, choose CCA;
 \examples{
 \dontrun{
 RDA(otu = otu, env = env, metadata = metadata, id_col = 1,
-group = "group", parallel_method = "none")
+group = "group", replicate_method = "none")
 }
 
 }

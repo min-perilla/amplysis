@@ -109,7 +109,7 @@ tax_table = tax, write_file = T)}
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$alpha(id_col = 1, group = "group", parallel_method = "mean",
+a$alpha(id_col = 1, group = "group", replicate_method = "mean",
 tree = tree, method = 1)
 }
 
@@ -120,7 +120,7 @@ tree = tree, method = 1)
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$alpha(id_col = 1, group = "group", parallel_method = "mean", tree = tree, method = 1)
+a$alpha(id_col = 1, group = "group", replicate_method = "mean", tree = tree, method = 1)
 a$alpha_plot(data,
 color_scheme = c('#aaf200','#0082ff',"#d23aa4","#c777ff", "#79ff79"),
 custom_order = c("A", "B", "R", "D", "S"))
@@ -134,7 +134,7 @@ custom_order = c("A", "B", "R", "D", "S"))
 \dontrun{
 stackbar(otu = otu, tax = tax, metadata = metadata, id_col = 1,
 group1 = "group", group2 = "group2", tax_cla = "genus",
-parallel_method = "mean", row_n = 20)}
+replicate_method = "mean", row_n = 20)}
 
 
 ## ------------------------------------------------
@@ -162,7 +162,7 @@ filename = NULL, file_width = 16, file_height = 9)
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$RDA(id_col = 1, group = "group", parallel_method = "none")
+a$RDA(id_col = 1, group = "group", replicate_method = "none")
 }
 
 
@@ -172,7 +172,7 @@ a$RDA(id_col = 1, group = "group", parallel_method = "none")
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$RDA(id_col = 1, group = "group", parallel_method = "none")
+a$RDA(id_col = 1, group = "group", replicate_method = "none")
 a$RDA_plot(custom_order = NULL,
            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
 
@@ -197,7 +197,7 @@ a$RDA_plot(custom_order = NULL,
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$CCA(id_col = 1, group = "group", parallel_method = "none")
+a$CCA(id_col = 1, group = "group", replicate_method = "none")
 }
 
 
@@ -207,7 +207,7 @@ a$CCA(id_col = 1, group = "group", parallel_method = "none")
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$CCA(id_col = 1, group = "group", parallel_method = "none")
+a$CCA(id_col = 1, group = "group", replicate_method = "none")
 a$CCA_plot(custom_order = NULL,
            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
 
@@ -233,7 +233,7 @@ a$CCA_plot(custom_order = NULL,
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$chord(id_col = 1, tax_cla = "genus", group = "group",
-parallel_method = "mean", row_n = 8, digits = 0)}
+replicate_method = "mean", row_n = 8, digits = 0)}
 
 
 ## ------------------------------------------------
@@ -243,7 +243,7 @@ parallel_method = "mean", row_n = 8, digits = 0)}
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$chord(id_col = 1, tax_cla = "genus", group = "group",
-parallel_method = "mean", row_n = 8, digits = 0)
+replicate_method = "mean", row_n = 8, digits = 0)
 a$chord_plot(color_scheme = c("#27e6ff", "#42ff0e", "#33BEB7", "#F66320",
 "#FBA127", "#A463D7", "#DB3937", "#ffaec8", "#828282"))
 }
@@ -256,7 +256,7 @@ a$chord_plot(color_scheme = c("#27e6ff", "#42ff0e", "#33BEB7", "#F66320",
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-parallel_method = "mean", row_n = 50)}
+replicate_method = "mean", row_n = 50)}
 
 
 ## ------------------------------------------------
@@ -267,7 +267,7 @@ parallel_method = "mean", row_n = 50)}
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 
 a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-parallel_method = "mean", row_n = 50)
+replicate_method = "mean", row_n = 50)
 
 a$heatmap_plot(
   data = heatmap1, scale = "row", cellwidth = NA, cellheight = NA,
@@ -304,7 +304,7 @@ a$heatmap_plot(
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pca(id_col = 1, group = "group", parallel_method = "none")
+a$pca(id_col = 1, group = "group", replicate_method = "none")
 }
 
 
@@ -314,7 +314,7 @@ a$pca(id_col = 1, group = "group", parallel_method = "none")
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pca(id_col = 1, group = "group", parallel_method = "none")
+a$pca(id_col = 1, group = "group", replicate_method = "none")
 a$pca_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                             "#ae876d", "#AFC24B"),
            seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -341,7 +341,7 @@ a$pca_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+a$pcoa(id_col = 1, group = "group", replicate_method = "none")
 }
 
 
@@ -351,7 +351,7 @@ a$pcoa(id_col = 1, group = "group", parallel_method = "none")
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+a$pcoa(id_col = 1, group = "group", replicate_method = "none")
 a$pcoa_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                              "#ae876d", "#AFC24B"),
             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -378,7 +378,7 @@ a$pcoa_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$nmds(id_col = 1, group = "group", parallel_method = "none")
+a$nmds(id_col = 1, group = "group", replicate_method = "none")
 }
 
 
@@ -388,7 +388,7 @@ a$nmds(id_col = 1, group = "group", parallel_method = "none")
 
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$nmds(id_col = 1, group = "group", parallel_method = "none")
+a$nmds(id_col = 1, group = "group", replicate_method = "none")
 a$nmds_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                              "#ae876d", "#AFC24B"),
             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -479,7 +479,7 @@ a$network(id_col = 1, .r = 0.6, .p = 0.05)}
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$network(id_col = 1, tax_cla = "genus", label = "phylum",
-          group = "group", parallel_method = "mean", calc_method = "spearman",
+          group = "group", replicate_method = "mean", calc_method = "spearman",
           cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05)}
 
 }
@@ -863,7 +863,7 @@ The significance marking method uses the letter marking method.
 \if{html}{\out{<div class="r">}}\preformatted{amplysis$alpha(
   id_col = 1,
   group = "group",
-  parallel_method = "mean",
+  replicate_method = "mean",
   method = 1
 )}\if{html}{\out{</div>}}
 }
@@ -877,7 +877,7 @@ OTU table, by default, is 1.}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 
 \item{\code{method}}{Multiple comparison methods, please enter a number from 1 to 7
@@ -903,7 +903,7 @@ to choose:
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$alpha(id_col = 1, group = "group", parallel_method = "mean",
+a$alpha(id_col = 1, group = "group", replicate_method = "mean",
 tree = tree, method = 1)
 }
 
@@ -984,7 +984,7 @@ for visualization.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$alpha(id_col = 1, group = "group", parallel_method = "mean", tree = tree, method = 1)
+a$alpha(id_col = 1, group = "group", replicate_method = "mean", tree = tree, method = 1)
 a$alpha_plot(data,
 color_scheme = c('#aaf200','#0082ff',"#d23aa4","#c777ff", "#79ff79"),
 custom_order = c("A", "B", "R", "D", "S"))
@@ -1017,7 +1017,7 @@ ggplot2 plotting. For quick plotting, you can use the built-in
   tax_cla = "phylum",
   group1 = "group",
   group2 = NULL,
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 8
 )}\if{html}{\out{</div>}}
 }
@@ -1037,7 +1037,7 @@ the grouping information in the metadata table.}
 \item{\code{group2}}{(Optional, character) Group 2 for facetting plots, please enter
 the column name of the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Parallel sample processing method,
+\item{\code{replicate_method}}{(character) replicate sample processing method,
 defaulting to mean. Options: mean (average), sum (summation), median (median).}
 
 \item{\code{row_n}}{(integer) Preserve the top N taxa (including the Nth) based on
@@ -1057,7 +1057,7 @@ tax = tax,                 # TAX table
 metadata = metadata,       # metadata table
 id_col = 1,                # There exists an OTU ID column (the first column).
 tax_cla = "genus",         # Cluster according to the "genus" column in the tax table.
-parallel_method = "mean",  # Parallel sample processing method: mean
+replicate_method = "mean",  # replicate sample processing method: mean
 row_n = 20)                # Preserve the top 20 taxa based on abundance,
 # and group the rest into "others".
 }
@@ -1067,7 +1067,7 @@ row_n = 20)                # Preserve the top 20 taxa based on abundance,
 \preformatted{\dontrun{
 stackbar(otu = otu, tax = tax, metadata = metadata, id_col = 1,
 group1 = "group", group2 = "group2", tax_cla = "genus",
-parallel_method = "mean", row_n = 20)}
+replicate_method = "mean", row_n = 20)}
 
 }
 \if{html}{\out{</div>}}
@@ -1238,7 +1238,7 @@ on the Axis Lengths value of DCA1 as follows: (1) If >4.0, choose CCA;
 (2) If between 3.0-4.0, both RDA and CCA are acceptable;
 (3) If <3.0, choose RDA.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$RDA(id_col = 1, group = "group", parallel_method = "none")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$RDA(id_col = 1, group = "group", replicate_method = "none")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1250,7 +1250,7 @@ OTU table, by default, is 1.}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -1259,7 +1259,7 @@ mean, sum, median, none.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$RDA(id_col = 1, group = "group", parallel_method = "none")
+a$RDA(id_col = 1, group = "group", replicate_method = "none")
 }
 
 }
@@ -1376,7 +1376,7 @@ which is related to the data scale.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$RDA(id_col = 1, group = "group", parallel_method = "none")
+a$RDA(id_col = 1, group = "group", replicate_method = "none")
 a$RDA_plot(custom_order = NULL,
            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
 
@@ -1414,7 +1414,7 @@ the \code{vegan} package. Selection is based on the Axis Lengths value of DCA1 a
 follows: (1) If >4.0, choose CCA; (2) If between 3.0-4.0, both RDA and CCA
 are acceptable; (3) If <3.0, choose RDA.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$CCA(id_col = 1, group = "group", parallel_method = "none")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$CCA(id_col = 1, group = "group", replicate_method = "none")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1426,7 +1426,7 @@ OTU table, by default, is 1.}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -1435,7 +1435,7 @@ mean, sum, median, none.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$CCA(id_col = 1, group = "group", parallel_method = "none")
+a$CCA(id_col = 1, group = "group", replicate_method = "none")
 }
 
 }
@@ -1552,7 +1552,7 @@ which is related to the data scale.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$CCA(id_col = 1, group = "group", parallel_method = "none")
+a$CCA(id_col = 1, group = "group", replicate_method = "none")
 a$CCA_plot(custom_order = NULL,
            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
 
@@ -1587,7 +1587,7 @@ diagram.
   id_col = 1,
   tax_cla = "genus",
   group = "group",
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 8,
   digits = 0
 )}\if{html}{\out{</div>}}
@@ -1606,13 +1606,13 @@ table can be entered, for example tax_cla = 'genus'.}
 \item{\code{group}}{(Required, character) Grouping information. please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 
 \item{\code{row_n}}{(integer) Preserve the top N taxa (including the Nth) based on
 abundance, while merging taxa with lower abundance into "others".}
 
-\item{\code{digits}}{(integer) When the parallel sample method is set to "mean," the
+\item{\code{digits}}{(integer) When the replicate sample method is set to "mean," the
 number of decimal places will default to 0.}
 }
 \if{html}{\out{</div>}}
@@ -1622,7 +1622,7 @@ number of decimal places will default to 0.}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$chord(id_col = 1, tax_cla = "genus", group = "group",
-parallel_method = "mean", row_n = 8, digits = 0)}
+replicate_method = "mean", row_n = 8, digits = 0)}
 
 }
 \if{html}{\out{</div>}}
@@ -1672,7 +1672,7 @@ for visualization.
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$chord(id_col = 1, tax_cla = "genus", group = "group",
-parallel_method = "mean", row_n = 8, digits = 0)
+replicate_method = "mean", row_n = 8, digits = 0)
 a$chord_plot(color_scheme = c("#27e6ff", "#42ff0e", "#33BEB7", "#F66320",
 "#FBA127", "#A463D7", "#DB3937", "#ffaec8", "#828282"))
 }
@@ -1704,7 +1704,7 @@ pheatmap plotting. For quick plotting, you can use the built-in
   tax_cla = "genus",
   group = "group",
   group2 = NULL,
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 35
 )}\if{html}{\out{</div>}}
 }
@@ -1725,7 +1725,7 @@ number of the grouping information in the metadata table.}
 column name or column number of the grouping information in the metadata
 table.}
 
-\item{\code{parallel_method}}{(character) Parallel sample processing method,
+\item{\code{replicate_method}}{(character) replicate sample processing method,
 defaulting to mean. Options: mean (average), sum (summation),
 median (median).}
 
@@ -1739,7 +1739,7 @@ abundance.}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-parallel_method = "mean", row_n = 50)}
+replicate_method = "mean", row_n = 50)}
 
 }
 \if{html}{\out{</div>}}
@@ -1959,7 +1959,7 @@ string, such as "\%.2f".}
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 
 a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-parallel_method = "mean", row_n = 50)
+replicate_method = "mean", row_n = 50)
 
 a$heatmap_plot(
   data = heatmap1, scale = "row", cellwidth = NA, cellheight = NA,
@@ -2005,7 +2005,7 @@ structures within high-dimensional datasets. The "pca()" function utilizes
 the built-in R function "stats::prcomp()" to analyze and calculate the
 explanatory power of each principal component.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$pca(id_col = 1, group = "group", parallel_method = "none")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$pca(id_col = 1, group = "group", replicate_method = "none")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2018,7 +2018,7 @@ numeric.}
 \item{\code{group}}{(Required, character) Grouping information. please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -2027,7 +2027,7 @@ mean, sum, median, none.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pca(id_col = 1, group = "group", parallel_method = "none")
+a$pca(id_col = 1, group = "group", replicate_method = "none")
 }
 
 }
@@ -2144,7 +2144,7 @@ which is related to the data scale.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pca(id_col = 1, group = "group", parallel_method = "none")
+a$pca(id_col = 1, group = "group", replicate_method = "none")
 a$pca_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                             "#ae876d", "#AFC24B"),
            seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -2180,7 +2180,7 @@ between individuals or groups. The "pcoa()" function calculates the
 Bray-Curtis distance using "vegan::vegdist()", then performs PCoA using the
 built-in R function "stats::cmdscale()", etaining the eigenvalues.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$pcoa(id_col = 1, group = "group", parallel_method = "none")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$pcoa(id_col = 1, group = "group", replicate_method = "none")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2193,7 +2193,7 @@ numeric.}
 \item{\code{group}}{(Required, character) Grouping information. please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -2202,7 +2202,7 @@ mean, sum, median, none.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+a$pcoa(id_col = 1, group = "group", replicate_method = "none")
 }
 
 }
@@ -2319,7 +2319,7 @@ which is related to the data scale.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+a$pcoa(id_col = 1, group = "group", replicate_method = "none")
 a$pcoa_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                              "#ae876d", "#AFC24B"),
             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -2355,7 +2355,7 @@ similarity or dissimilarity between samples in a lower-dimensional space.
 The "nmds()" function utilizes "vegan::vegdist" to calculate the Bray-Curtis
 distance and employs "vegan::metaMDS" for conducting NMDS ordination analysis.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$nmds(id_col = 1, group = "group", parallel_method = "none")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$nmds(id_col = 1, group = "group", replicate_method = "none")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2367,7 +2367,7 @@ means there is no OTU_ID column, and the data is already numeric.}
 \item{\code{group}}{(Required, character) Grouping information. please enter the
 column name of the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -2376,7 +2376,7 @@ mean, sum, median, none.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$nmds(id_col = 1, group = "group", parallel_method = "none")
+a$nmds(id_col = 1, group = "group", replicate_method = "none")
 }
 
 }
@@ -2490,7 +2490,7 @@ which is related to the data scale.}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
-a$nmds(id_col = 1, group = "group", parallel_method = "none")
+a$nmds(id_col = 1, group = "group", replicate_method = "none")
 a$nmds_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
                              "#ae876d", "#AFC24B"),
             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -2527,7 +2527,7 @@ the \code{group} column in the metadata file to control the grouping information
 It is important to note that when the number of samples is 5 or more, we
 recommend using a \code{upset} diagram to represent the intersections of OTUs.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$venn(id_col = 1, group = "group", parallel_method = "mean")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$venn(id_col = 1, group = "group", replicate_method = "mean")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2539,7 +2539,7 @@ OTU table, by default, is 1.}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -2622,7 +2622,7 @@ samples. Although the \code{Upset()} function allows the \code{metadata} paramet
 be NULL, we still recommend using the \code{group} column in the metadata file to
 control the grouping information.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{amplysis$Upset(id_col = 1, group = "group", parallel_method = "mean")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{amplysis$Upset(id_col = 1, group = "group", replicate_method = "mean")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2634,7 +2634,7 @@ OTU table, by default, is 1.}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 }
 \if{html}{\out{</div>}}
@@ -2786,7 +2786,7 @@ may run slower.
   tax_cla = "genus",
   label = "phylum",
   group = "group",
-  parallel_method = "mean",
+  replicate_method = "mean",
   calc_method = "spearman",
   cluster_method = 1,
   normalize_flag = TRUE,
@@ -2810,7 +2810,7 @@ from a column name in the taxonomy file, with the default being "phylum".}
 \item{\code{group}}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{\code{parallel_method}}{(character) Sample processing methods for the same group:
+\item{\code{replicate_method}}{(character) Sample processing methods for the same group:
 average, sum, median, none.}
 
 \item{\code{calc_method}}{(character) Correlation analysis methods available:
@@ -2865,7 +2865,7 @@ a$network(id_col = 1, .r = 0.6, .p = 0.05)}
 \dontrun{
 a = amplysis$new(otu, tax, rep, tree, env, metadata)
 a$network(id_col = 1, tax_cla = "genus", label = "phylum",
-          group = "group", parallel_method = "mean", calc_method = "spearman",
+          group = "group", replicate_method = "mean", calc_method = "spearman",
           cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05)}
 
 }

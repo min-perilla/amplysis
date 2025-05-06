@@ -19,7 +19,7 @@
 #' OTU table, by default, is 1.
 #' @param group (character) Group 1, please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method (character) Sample processing methods for the same group:
+#' @param replicate_method (character) Sample processing methods for the same group:
 #' mean, sum, median, none.
 #'
 #' @return otu table
@@ -35,7 +35,7 @@
 #' @importFrom VennDiagram get.venn.partitions
 #'
 venn = function(otu, metadata = NULL, id_col = 1,
-         group = "group", parallel_method = "mean")
+         group = "group", replicate_method = "mean")
 {
   if(!is.null(metadata)) {
     if (!all(group %in% colnames(metadata))) {
@@ -49,18 +49,18 @@ venn = function(otu, metadata = NULL, id_col = 1,
 
     ##
     if ("sample" %in% base::tolower(colnames(metadata)) &&
-        "parallel" %in% base::tolower(colnames(metadata))) {
+        "replicate" %in% base::tolower(colnames(metadata))) {
       cat("\033[32mmetadata --> DONE\n\033[30m")
     } else {
       stop("Please ensure that the metadata table contains the `sample` column
-           and the `parallel` column!",
+           and the `replicate` column!",
            "\nsample: Sample ID (unique)",
-           "\nparallel: Parallel sample identifier")
+           "\nreplicate: replicate sample identifier")
     }
 
 
     ##
-    metadata2 <- metadata[, c("sample", "parallel", group)]
+    metadata2 <- metadata[, c("sample", "replicate", group)]
     na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
     if (any(na_rows)) {
       cat("metadata: The following row numbers contain NA values and have been
@@ -79,18 +79,18 @@ venn = function(otu, metadata = NULL, id_col = 1,
 
     ##
     allowedMethods <- base::tolower(c("mean", "sum", "median", "none"))
-    parallel_method <- base::tolower(parallel_method)
-    if(!parallel_method %in% allowedMethods) {
-      stop("Please enter the correct argument for the parameter 'parallel_method':\n",
-           "Process according to the 'parallel' column in the `metadata` table,
-           samples with the same 'parallel' value are considered parallel
+    replicate_method <- base::tolower(replicate_method)
+    if(!replicate_method %in% allowedMethods) {
+      stop("Please enter the correct argument for the parameter 'replicate_method':\n",
+           "Process according to the 'replicate' column in the `metadata` table,
+           samples with the same 'replicate' value are considered replicate
            samples\n",
            "`mean`  : Calculate the average\n",
            "`sum`   : Calculate the sum\n",
            "`median`: Calculate the median\n",
-           "`none`  : Do not process parallel samples\n")
+           "`none`  : Do not process replicate samples\n")
     } else {
-      cat("\033[32mParallel parallel_method: `", parallel_method, "`\n\033[30m", sep = "")
+      cat("\033[32mreplicate replicate_method: `", replicate_method, "`\n\033[30m", sep = "")
     }
 
 
@@ -102,16 +102,16 @@ venn = function(otu, metadata = NULL, id_col = 1,
 
 
     ##
-    if (parallel_method != "none") {
+    if (replicate_method != "none") {
       otu4 <- otu3 %>%
         # 进行分组
         dplyr::group_by_at(dplyr::vars(names(otu3)[1], group)) %>%
         dplyr::select(names(otu3)[1], group, "abun") %>%
-        dplyr::summarise_if(is.numeric, match.fun(parallel_method)) %>%
+        dplyr::summarise_if(is.numeric, match.fun(replicate_method)) %>%
         dplyr::ungroup()
       cat("\033[32motu4 ---> DONE\n\033[30m")
     } else {
-      otu4 <- otu3[ , setdiff(names(otu3), c("sample", "parallel"))]  # 移除列 "sample", "parallel"
+      otu4 <- otu3[ , setdiff(names(otu3), c("sample", "replicate"))]  # 移除列 "sample", "replicate"
       cat("\033[32motu4 ---> DONE2\n\033[30m")
     }
 

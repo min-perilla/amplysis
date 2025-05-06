@@ -109,7 +109,7 @@ for visualization.
 \examples{
 \dontrun{
 rda1 <- RDA(otu = otu, env = env, metadata = metadata, id_col = 1,
-group = "group", parallel_method = "none")
+group = "group", replicate_method = "none")
 
 RDA_plot(data = rda1, custom_order = NULL,
          color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,

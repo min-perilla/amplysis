@@ -18,7 +18,7 @@
 #' from a column name in the taxonomy file, with the default being "phylum".
 #' @param group (character) Group 1, please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method (character) Sample processing methods for the same group:
+#' @param replicate_method (character) Sample processing methods for the same group:
 #' average, sum, median, none.
 #' @param calc_method (character) Correlation analysis methods available:
 #' "spearman" or "pearson". The default method is "Spearman".
@@ -69,7 +69,7 @@
 #' network(otu, tax, metadata, id_col = 1, .r = 0.6, .p = 0.05)}
 #' \dontrun{
 #' network(otu, tax, metadata, id_col = 1, tax_cla = "genus", label = "phylum",
-#'         group = "group", parallel_method = "mean", calc_method = "spearman",
+#'         group = "group", replicate_method = "mean", calc_method = "spearman",
 #'         cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05,
 #'         fileName_edge = "edge", fileName_node = "node")}
 #'
@@ -90,7 +90,7 @@
 #'
 #'
 network = function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
-                   label = "phylum", group = "group", parallel_method = "none",
+                   label = "phylum", group = "group", replicate_method = "none",
                    calc_method = "spearman", cluster_method = 1, normalize_flag = TRUE,
                    .r = 0.6, .p = 0.05, fileName_edge = "edge", fileName_node = "node")
 {
@@ -109,9 +109,9 @@ network = function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
 
 
   ##
-  otu_metadata = amplysis::parallel(
+  otu_metadata = amplysis::Replicate(
     otu = otu, metadata = metadata, id_col = id_col, group = group,
-    parallel_method = parallel_method, digits = 0, metadata_out = T)
+    replicate_method = replicate_method, digits = 0, metadata_out = T)
 
   otu2 = otu_metadata[["otu"]]
   metadata2 = otu_metadata[["metadata"]]

@@ -16,11 +16,11 @@
 #'
 #' @param group (Required, character) Grouping information. please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method  (character) Sample processing methods for the same group:
+#' @param replicate_method  (character) Sample processing methods for the same group:
 #' mean, sum, median, none.
 #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
 #' abundance, while merging taxa with lower abundance into "others".
-#' @param digits (integer) When the parallel sample method is set to "mean," the
+#' @param digits (integer) When the replicate sample method is set to "mean," the
 #' number of decimal places will default to 0.
 #'
 #' @return a data table
@@ -29,19 +29,19 @@
 #' @examples
 #' \dontrun{
 #' test = chord(otu = otu, metadata = metadata, tax = tax, id_col = 1,
-#' tax_cla = "genus", group = "group", parallel_method = "mean", row_n = 8,
+#' tax_cla = "genus", group = "group", replicate_method = "mean", row_n = 8,
 #' digits = 0)}
 #'
 #' @importFrom dplyr across arrange desc group_by mutate row_number summarize
 #' summarise_all ungroup where
 #'
 chord = function(otu, metadata, tax, id_col = 1, tax_cla = "genus",
-         group = "group", parallel_method = "mean", row_n = 8, digits = 0)
+         group = "group", replicate_method = "mean", row_n = 8, digits = 0)
 {
   ##
-  otu_matadata = amplysis::parallel(
+  otu_matadata = amplysis::Replicate(
     otu = otu, metadata = metadata, id_col = id_col,
-    group = group, parallel_method = parallel_method,
+    group = group, replicate_method = replicate_method,
     digits = digits, metadata_out = T)
 
   otu2 = otu_matadata[["otu"]]

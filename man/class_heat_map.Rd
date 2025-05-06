@@ -53,7 +53,7 @@ functions, allowing for one-click plotting of species stacked plots.
   tax_cla = "genus",
   group1 = "group",
   group2 = NULL,
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 35,
   scale = "row",
   cellwidth = NA,
@@ -85,7 +85,7 @@ number of the grouping information in the metadata table.}
 column name or column number of the grouping information in the metadata
 table.}
 
-\item{\code{parallel_method}}{(character) Parallel sample processing method,
+\item{\code{replicate_method}}{(character) replicate sample processing method,
 defaulting to mean. Options: mean (average), sum (summation),
 median (median).}
 

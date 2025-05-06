@@ -23,7 +23,7 @@
 #' @param group2 (character) Group 2 for facetting plots, please enter the
 #' column name or column number of the grouping information in the metadata
 #' table.
-#' @param parallel_method (character) Parallel sample processing method,
+#' @param replicate_method (character) replicate sample processing method,
 #' defaulting to mean. Options: mean (average), sum (summation),
 #' median (median).
 #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
@@ -35,7 +35,7 @@
 #' @examples
 #' \dontrun{
 #' heatmap(otu = otu, tax = tax, metadata = metadata, id_col = 1,
-#' group1 = "group", group2 = NULL, tax_cla = "genus", parallel_method = "mean",
+#' group1 = "group", group2 = NULL, tax_cla = "genus", replicate_method = "mean",
 #' row_n = 50)}
 #'
 #' @importFrom dplyr across arrange desc group_by group_by_at left_join ungroup
@@ -46,7 +46,7 @@
 # Please use tools:: showNonASCIIfile(file.R) to check for the presence of non ASCII characters.
 # tools::showNonASCIIfile(file.path(dirname(rstudioapi::getActiveDocumentContext()$path), "heatmap.R"))
 heatmap <- function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
-                    group1 = "group", group2 = NULL, parallel_method = "mean", row_n = 35)
+                    group1 = "group", group2 = NULL, replicate_method = "mean", row_n = 35)
 {
   # Process data
   ## Check arguments group1 and group2
@@ -60,19 +60,19 @@ heatmap <- function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
   }
 
   ## Format check
-  # Check if the metadata dataframe contains "sample" and "parallel"
+  # Check if the metadata dataframe contains "sample" and "replicate"
   if ("sample" %in% base::tolower(colnames(metadata)) &&
-      "parallel" %in% base::tolower(colnames(metadata))) {
+      "replicate" %in% base::tolower(colnames(metadata))) {
     cat("metadata --> DONE\n")
   } else {
-    stop("Please ensure that the metadata table contains `sample` and `parallel` columns!",
+    stop("Please ensure that the metadata table contains `sample` and `replicate` columns!",
          "\nsample  : Sample ID (unique)",
-         "\nparallel: Parallel sample identifier")
+         "\nreplicate: replicate sample identifier")
   }
 
   ## Process metadata table
-  # Extract columns from metadata table: "sample", "parallel", argument group1, and argument group2
-  metadata2 <- metadata[, c("sample", "parallel", group1, group2)]
+  # Extract columns from metadata table: "sample", "replicate", argument group1, and argument group2
+  metadata2 <- metadata[, c("sample", "replicate", group1, group2)]
 
   # Discard rows with NA values
   na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
@@ -94,29 +94,29 @@ heatmap <- function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
 
 
   ##
-  # Check parallel sample processing method
-  if(parallel_method == "mean") {
-    cat("In the `metadata` table, samples with the same `parallel` value are considered parallel samples\n")
-    cat("Parallel sample processing method: mean\n")
+  # Check replicate sample processing method
+  if(replicate_method == "mean") {
+    cat("In the `metadata` table, samples with the same `replicate` value are considered replicate samples\n")
+    cat("replicate sample processing method: mean\n")
 
-  } else if(parallel_method == "sum") {
-    cat("In the `metadata` table, samples with the same `parallel` value are considered parallel samples\n")
-    cat("Parallel sample processing method: sum\n")
+  } else if(replicate_method == "sum") {
+    cat("In the `metadata` table, samples with the same `replicate` value are considered replicate samples\n")
+    cat("replicate sample processing method: sum\n")
 
-  } else if(parallel_method == "median") {
-    cat("In the `metadata` table, samples with the same `parallel` value are considered parallel samples\n")
-    cat("Parallel sample processing method: median\n")
+  } else if(replicate_method == "median") {
+    cat("In the `metadata` table, samples with the same `replicate` value are considered replicate samples\n")
+    cat("replicate sample processing method: median\n")
 
-  } else if(parallel_method == "none") {
-    cat("No parallel sample processing\n")
+  } else if(replicate_method == "none") {
+    cat("No replicate sample processing\n")
 
   } else {
-    stop("Please enter a valid parameter for the parallel_method argument:\n",
-         "Process based on the `parallel` column in the `metadata` table. Samples with the same `parallel` value are considered parallel samples.\n",
+    stop("Please enter a valid parameter for the replicate_method argument:\n",
+         "Process based on the `replicate` column in the `metadata` table. Samples with the same `replicate` value are considered replicate samples.\n",
          "`mean`  : Take the mean\n",
          "`sum`   : Sum the values\n",
          "`median`: Take the median\n",
-         "`none`  : Do not process parallel samples\n")
+         "`none`  : Do not process replicate samples\n")
   }
 
 
@@ -202,26 +202,26 @@ heatmap <- function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
 
 
   ##
-  # Process parallel samples
-  if (parallel_method != "none") {
+  # Process replicate samples
+  if (replicate_method != "none") {
     otu5 <- otu4 %>%
-      # Group by parallel and classification columns
-      dplyr::group_by_at(dplyr::vars(all_of(tax_cla), "parallel")) %>%
-      dplyr::select(all_of(tax_cla), "parallel", "abun") %>%
-      dplyr::summarise_if(is.numeric, match.fun(parallel_method)) %>%
+      # Group by replicate and classification columns
+      dplyr::group_by_at(dplyr::vars(all_of(tax_cla), "replicate")) %>%
+      dplyr::select(all_of(tax_cla), "replicate", "abun") %>%
+      dplyr::summarise_if(is.numeric, match.fun(replicate_method)) %>%
       dplyr::ungroup()
 
     # Left join again with metadata2 table
     metadata3 <- metadata2[, -which(names(metadata2) == "sample")]
     metadata3 <- unique(metadata3) # Remove duplicates
-    otu5 <- merge(otu5, metadata3, by = "parallel", all.x = T, all.y = F, sort = F)
+    otu5 <- merge(otu5, metadata3, by = "replicate", all.x = T, all.y = F, sort = F)
 
-    cat("parallel_method --> DONE\n")
+    cat("replicate_method --> DONE\n")
     cat("otu5 ---> DONE\n")
   } else {
-    # Do not process parallel samples
+    # Do not process replicate samples
     otu5 <- otu4
-    cat("\033[31mparallelMethod --> NONE\033[0m\n")
+    cat("\033[31mreplicateMethod --> NONE\033[0m\n")
     cat("otu5 ---> DONE\n")
   }
 
@@ -238,7 +238,7 @@ heatmap <- function(otu, tax, metadata, id_col = 1, tax_cla = "genus",
 
   # Convert data from long back to wide format
   otu7 <- otu6 %>%
-    # dplyr::select(-dplyr::all_of("parallel")) %>%
+    # dplyr::select(-dplyr::all_of("replicate")) %>%
     spread(key = {{ group1 }}, value = !!dplyr::sym("abun"))
 
   ##

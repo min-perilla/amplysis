@@ -4,7 +4,7 @@
 \alias{pcoa}
 \title{Principal Co-ordinates Analysis}
 \usage{
-pcoa(otu, metadata, id_col = 1, group = "group", parallel_method = "none")
+pcoa(otu, metadata, id_col = 1, group = "group", replicate_method = "none")
 }
 \arguments{
 \item{otu}{otu table}
@@ -18,7 +18,7 @@ numeric.}
 \item{group}{(Required, character) Grouping information. please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \value{
@@ -34,6 +34,6 @@ built-in R function "stats::cmdscale()", etaining the eigenvalues.
 }
 \examples{
 \dontrun{pcoa(otu = otu, metadata = metadata, id_col = 1, group = "group",
-              parallel_method = "none")}
+              replicate_method = "none")}
 
 }

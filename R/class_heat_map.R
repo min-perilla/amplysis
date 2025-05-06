@@ -31,7 +31,7 @@ class_heat_map = R6::R6Class(
     #' @param group2 (character) Group 2 for facetting plots, please enter the
     #' column name or column number of the grouping information in the metadata
     #' table.
-    #' @param parallel_method (character) Parallel sample processing method,
+    #' @param replicate_method (character) replicate sample processing method,
     #' defaulting to mean. Options: mean (average), sum (summation),
     #' median (median).
     #' @param row_n (integer) Preserve the top N taxa (including the Nth) based
@@ -76,7 +76,7 @@ class_heat_map = R6::R6Class(
                     tax_cla = "genus",
                     group1 = "group",
                     group2 = NULL,
-                    parallel_method = "mean",
+                    replicate_method = "mean",
                     row_n = 35,
 
                     scale = "row",
@@ -103,7 +103,7 @@ class_heat_map = R6::R6Class(
         tax_cla = tax_cla,
         group1 = group1,
         group2 = group2,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         row_n = row_n
       )
 

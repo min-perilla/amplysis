@@ -212,7 +212,7 @@ numbers 4 5 6 1 2 3.
 \examples{
 \dontrun{
 heatmap1 = heatmap(otu = otu, tax = tax, metadata = metadata, id_col = 1,
-group1 = "group", group2 = NULL, tax_cla = "genus", parallel_method = "mean",
+group1 = "group", group2 = NULL, tax_cla = "genus", replicate_method = "mean",
 row_n = 50)
 
 heatmap_plot(

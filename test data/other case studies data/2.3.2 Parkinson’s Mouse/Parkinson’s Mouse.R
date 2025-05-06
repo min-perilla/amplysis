@@ -20,17 +20,15 @@ write.csv(tax3, "tax.csv", row.names = F)
 tax = tax3
 
 # Data Analysis and Visualization
-
-
 # genus
 data_sta_g1 = stackbar(otu = otu, tax = tax, metadata = metadata, 
-                      id_col = 1, tax_cla = "genus", group1 = "group", group2 = "group2", parallel_method = "none", row_n = 20)
+                      id_col = 1, tax_cla = "genus", group1 = "group", group2 = "group2", replicate_method = "none", row_n = 20)
 stackbar_plot(data_sta_g1, tax_cla = "genus", x_group = "group", facet_group = "group2", 
               bar_width = 0.6, title_legend = "Top 20 Genera", 
               filename = "genus_1", file_height = 9, file_width = 14)
 
 
 # PCoA
-data_pcoa_1 = pcoa(otu, metadata, group = "group", parallel_method = "none")
+data_pcoa_1 = pcoa(otu, metadata, group = "group", replicate_method = "none")
 pcoa_plot(data_pcoa_1, ellipse_type = 1)
 

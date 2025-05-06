@@ -109,7 +109,7 @@ for visualization.
 \examples{
 \dontrun{
 cca1 <- CCA(otu = otu, env = env, metadata = metadata, id_col = 1,
-group = "group", parallel_method = "none")
+group = "group", replicate_method = "none")
 
 CCA_plot(data = cca1, custom_order = NULL,
          color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,

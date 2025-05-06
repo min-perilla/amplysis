@@ -276,7 +276,7 @@ amplysis = R6::R6Class(
     #' OTU table, by default, is 1.
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' average, sum, median, none.
     #' @param method Multiple comparison methods, please enter a number from 1 to 7
     #' to choose:
@@ -298,19 +298,19 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$alpha(id_col = 1, group = "group", parallel_method = "mean",
+    #' a$alpha(id_col = 1, group = "group", replicate_method = "mean",
     #' tree = tree, method = 1)
     #' }
     #'
     alpha = function(id_col = 1, group = "group",
-                     parallel_method = "mean", method = 1)
+                     replicate_method = "mean", method = 1)
     {
       result = amplysis::alpha(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         tree = private$.tree,
         method = method
       )
@@ -353,7 +353,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$alpha(id_col = 1, group = "group", parallel_method = "mean", tree = tree, method = 1)
+    #' a$alpha(id_col = 1, group = "group", replicate_method = "mean", tree = tree, method = 1)
     #' a$alpha_plot(data,
     #' color_scheme = c('#aaf200','#0082ff',"#d23aa4","#c777ff", "#79ff79"),
     #' custom_order = c("A", "B", "R", "D", "S"))
@@ -405,7 +405,7 @@ amplysis = R6::R6Class(
     #'          metadata = metadata,       # metadata table
     #'          id_col = 1,                # There exists an OTU ID column (the first column).
     #'          tax_cla = "genus",         # Cluster according to the "genus" column in the tax table.
-    #'          parallel_method = "mean",  # Parallel sample processing method: mean
+    #'          replicate_method = "mean",  # replicate sample processing method: mean
     #'          row_n = 20)                # Preserve the top 20 taxa based on abundance,
     #'                                     # and group the rest into "others".
     #'
@@ -417,7 +417,7 @@ amplysis = R6::R6Class(
     #' the grouping information in the metadata table.
     #' @param group2 (Optional, character) Group 2 for facetting plots, please enter
     #' the column name of the grouping information in the metadata table.
-    #' @param parallel_method (character) Parallel sample processing method,
+    #' @param replicate_method (character) replicate sample processing method,
     #' defaulting to mean. Options: mean (average), sum (summation), median (median).
     #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
     #' abundance, while merging taxa with lower abundance into "others".
@@ -426,10 +426,10 @@ amplysis = R6::R6Class(
     #' \dontrun{
     #' stackbar(otu = otu, tax = tax, metadata = metadata, id_col = 1,
     #' group1 = "group", group2 = "group2", tax_cla = "genus",
-    #' parallel_method = "mean", row_n = 20)}
+    #' replicate_method = "mean", row_n = 20)}
     #'
     stackbar = function(id_col = 1, tax_cla = "phylum", group1 = "group",
-                        group2 = NULL, parallel_method = "mean", row_n = 8)
+                        group2 = NULL, replicate_method = "mean", row_n = 8)
     {
       private$.data = amplysis::stackbar(
         otu = private$.otu,
@@ -439,7 +439,7 @@ amplysis = R6::R6Class(
         tax_cla = tax_cla,
         group1 = group1,
         group2 = group2,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         row_n = row_n
       )
     },
@@ -596,23 +596,23 @@ amplysis = R6::R6Class(
     #' OTU table, by default, is 1.
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' mean, sum, median, none.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$RDA(id_col = 1, group = "group", parallel_method = "none")
+    #' a$RDA(id_col = 1, group = "group", replicate_method = "none")
     #' }
     #'
-    RDA = function(id_col = 1, group = "group", parallel_method = "none") {
+    RDA = function(id_col = 1, group = "group", replicate_method = "none") {
       private$.data = amplysis::RDA(
         otu = private$.otu,
         env = private$.env,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -667,7 +667,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$RDA(id_col = 1, group = "group", parallel_method = "none")
+    #' a$RDA(id_col = 1, group = "group", replicate_method = "none")
     #' a$RDA_plot(custom_order = NULL,
     #'            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
     #'
@@ -759,23 +759,23 @@ amplysis = R6::R6Class(
     #' OTU table, by default, is 1.
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' mean, sum, median, none.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$CCA(id_col = 1, group = "group", parallel_method = "none")
+    #' a$CCA(id_col = 1, group = "group", replicate_method = "none")
     #' }
     #'
-    CCA = function(id_col = 1, group = "group", parallel_method = "none") {
+    CCA = function(id_col = 1, group = "group", replicate_method = "none") {
       private$.data = amplysis::CCA(
         otu = private$.otu,
         env = private$.env,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
     ############################################################################
@@ -831,7 +831,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$CCA(id_col = 1, group = "group", parallel_method = "none")
+    #' a$CCA(id_col = 1, group = "group", replicate_method = "none")
     #' a$CCA_plot(custom_order = NULL,
     #'            color_scheme = c("#00b0f6", "#FFC24B", "#f8766d"), seed = 123,
     #'
@@ -898,21 +898,21 @@ amplysis = R6::R6Class(
     #'
     #' @param group (Required, character) Grouping information. please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method  (character) Sample processing methods for the same group:
+    #' @param replicate_method  (character) Sample processing methods for the same group:
     #' average, sum, median, none.
     #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
     #' abundance, while merging taxa with lower abundance into "others".
-    #' @param digits (integer) When the parallel sample method is set to "mean," the
+    #' @param digits (integer) When the replicate sample method is set to "mean," the
     #' number of decimal places will default to 0.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
     #' a$chord(id_col = 1, tax_cla = "genus", group = "group",
-    #' parallel_method = "mean", row_n = 8, digits = 0)}
+    #' replicate_method = "mean", row_n = 8, digits = 0)}
     #'
     chord = function(id_col = 1, tax_cla = "genus",
-                     group = "group", parallel_method = "mean", row_n = 8, digits = 0){
+                     group = "group", replicate_method = "mean", row_n = 8, digits = 0){
       private$.data = amplysis::chord(
         otu = private$.otu,
         metadata = private$.metadata,
@@ -920,7 +920,7 @@ amplysis = R6::R6Class(
         id_col = id_col,
         tax_cla = tax_cla,
         group = group,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         row_n = row_n,
         digits = digits
       )
@@ -946,7 +946,7 @@ amplysis = R6::R6Class(
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
     #' a$chord(id_col = 1, tax_cla = "genus", group = "group",
-    #' parallel_method = "mean", row_n = 8, digits = 0)
+    #' replicate_method = "mean", row_n = 8, digits = 0)
     #' a$chord_plot(color_scheme = c("#27e6ff", "#42ff0e", "#33BEB7", "#F66320",
     #' "#FBA127", "#A463D7", "#DB3937", "#ffaec8", "#828282"))
     #' }
@@ -992,7 +992,7 @@ amplysis = R6::R6Class(
     #' @param group2 (character) Group 2 for facetting plots, please enter the
     #' column name or column number of the grouping information in the metadata
     #' table.
-    #' @param parallel_method (character) Parallel sample processing method,
+    #' @param replicate_method (character) replicate sample processing method,
     #' defaulting to mean. Options: mean (average), sum (summation),
     #' median (median).
     #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
@@ -1002,10 +1002,10 @@ amplysis = R6::R6Class(
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
     #' a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-    #' parallel_method = "mean", row_n = 50)}
+    #' replicate_method = "mean", row_n = 50)}
     #'
     heatmap = function(id_col = 1, tax_cla = "genus", group = "group",
-                       group2 = NULL, parallel_method = "mean", row_n = 35)
+                       group2 = NULL, replicate_method = "mean", row_n = 35)
     {
       private$.data = amplysis::heatmap(
         otu = private$.otu,
@@ -1015,7 +1015,7 @@ amplysis = R6::R6Class(
         tax_cla = tax_cla,
         group = group,
         group2 = group2,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         row_n = row_n
       )
     },
@@ -1168,7 +1168,7 @@ amplysis = R6::R6Class(
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
     #'
     #' a$heatmap(id_col = 1, group = "group", group2 = NULL, tax_cla = "genus",
-    #' parallel_method = "mean", row_n = 50)
+    #' replicate_method = "mean", row_n = 50)
     #'
     #' a$heatmap_plot(
     #'   data = heatmap1, scale = "row", cellwidth = NA, cellheight = NA,
@@ -1275,23 +1275,23 @@ amplysis = R6::R6Class(
     #' numeric.
     #' @param group (Required, character) Grouping information. please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' mean, sum, median, none.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$pca(id_col = 1, group = "group", parallel_method = "none")
+    #' a$pca(id_col = 1, group = "group", replicate_method = "none")
     #' }
     #'
-    pca = function(id_col = 1, group = "group", parallel_method = "none")
+    pca = function(id_col = 1, group = "group", replicate_method = "none")
     {
       private$.data = amplysis::pca(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -1346,7 +1346,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$pca(id_col = 1, group = "group", parallel_method = "none")
+    #' a$pca(id_col = 1, group = "group", replicate_method = "none")
     #' a$pca_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
     #'                             "#ae876d", "#AFC24B"),
     #'            seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -1450,23 +1450,23 @@ amplysis = R6::R6Class(
     #' numeric.
     #' @param group (Required, character) Grouping information. please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' mean, sum, median, none.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+    #' a$pcoa(id_col = 1, group = "group", replicate_method = "none")
     #' }
     #'
-    pcoa = function(id_col = 1, group = "group", parallel_method = "none")
+    pcoa = function(id_col = 1, group = "group", replicate_method = "none")
     {
       private$.data = amplysis::pcoa(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -1521,7 +1521,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$pcoa(id_col = 1, group = "group", parallel_method = "none")
+    #' a$pcoa(id_col = 1, group = "group", replicate_method = "none")
     #' a$pcoa_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
     #'                              "#ae876d", "#AFC24B"),
     #'             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -1624,23 +1624,23 @@ amplysis = R6::R6Class(
     #' means there is no OTU_ID column, and the data is already numeric.
     #' @param group (Required, character) Grouping information. please enter the
     #' column name of the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' mean, sum, median, none.
     #'
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$nmds(id_col = 1, group = "group", parallel_method = "none")
+    #' a$nmds(id_col = 1, group = "group", replicate_method = "none")
     #' }
     #'
-    nmds = function(id_col = 1, group = "group", parallel_method = "none")
+    nmds = function(id_col = 1, group = "group", replicate_method = "none")
     {
       private$.data = amplysis::nmds(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -1694,7 +1694,7 @@ amplysis = R6::R6Class(
     #' @examples
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
-    #' a$nmds(id_col = 1, group = "group", parallel_method = "none")
+    #' a$nmds(id_col = 1, group = "group", replicate_method = "none")
     #' a$nmds_plot(color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",
     #'                              "#ae876d", "#AFC24B"),
     #'             seed = 123, custom_order = c("A", "B", "R", "D", "S"),
@@ -1798,7 +1798,7 @@ amplysis = R6::R6Class(
     #' OTU table, by default, is 1.
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' average, sum, median, none.
     #'
     #' @examples
@@ -1807,14 +1807,14 @@ amplysis = R6::R6Class(
     #' a$venn(1, "group", "mean")
     #' }
     #'
-    venn = function(id_col = 1, group = "group", parallel_method = "mean")
+    venn = function(id_col = 1, group = "group", replicate_method = "mean")
     {
       private$.data = amplysis::venn(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -1880,7 +1880,7 @@ amplysis = R6::R6Class(
     #' OTU table, by default, is 1.
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' average, sum, median, none.
     #'
     #' @examples
@@ -1889,14 +1889,14 @@ amplysis = R6::R6Class(
     #' a$Upset(1, "group", "mean")
     #' }
     #'
-    Upset = function(id_col = 1, group = "group", parallel_method = "mean")
+    Upset = function(id_col = 1, group = "group", replicate_method = "mean")
     {
       private$.data = amplysis::Upset(
         otu = private$.otu,
         metadata = private$.metadata,
         id_col = id_col,
         group = group,
-        parallel_method = parallel_method
+        replicate_method = replicate_method
       )
     },
 
@@ -2031,7 +2031,7 @@ amplysis = R6::R6Class(
     #' from a column name in the taxonomy file, with the default being "phylum".
     #' @param group (character) Group 1, please enter the column name of
     #' the grouping information in the metadata table.
-    #' @param parallel_method (character) Sample processing methods for the same group:
+    #' @param replicate_method (character) Sample processing methods for the same group:
     #' average, sum, median, none.
     #' @param calc_method (character) Correlation analysis methods available:
     #' "spearman" or "pearson". The default method is "Spearman".
@@ -2080,11 +2080,11 @@ amplysis = R6::R6Class(
     #' \dontrun{
     #' a = amplysis$new(otu, tax, rep, tree, env, metadata)
     #' a$network(id_col = 1, tax_cla = "genus", label = "phylum",
-    #'           group = "group", parallel_method = "mean", calc_method = "spearman",
+    #'           group = "group", replicate_method = "mean", calc_method = "spearman",
     #'           cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05)}
     #'
     network = function(id_col = 1, tax_cla = "genus", label = "phylum", group = "group",
-                       parallel_method = "mean", calc_method = "spearman",
+                       replicate_method = "mean", calc_method = "spearman",
                        cluster_method = 1, normalize_flag = TRUE, .r = 0.6, .p = 0.05)
     {
       private$.data = amplysis::network(
@@ -2095,7 +2095,7 @@ amplysis = R6::R6Class(
         tax_cla = tax_cla,
         label = label,
         group = group,
-        parallel_method = parallel_method,
+        replicate_method = replicate_method,
         calc_method = calc_method,
         cluster_method = cluster_method,
         normalize_flag = normalize_flag,

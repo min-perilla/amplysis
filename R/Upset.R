@@ -17,7 +17,7 @@
 #' OTU table, by default, is 1.
 #' @param group (character) Group 1, please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method (character) Sample processing methods for the same group:
+#' @param replicate_method (character) Sample processing methods for the same group:
 #' mean, sum, median, none.
 #'
 #' @return otu table
@@ -32,7 +32,7 @@
 #' @importFrom ggplot2 vars
 #'
 Upset <- function(otu, metadata = NULL, id_col = 1,
-                  group = "group", parallel_method = "mean")
+                  group = "group", replicate_method = "mean")
 {
   ##
   # Allow metadata to be NULL. When metadata is NULL, the group parameter will be invalid
@@ -49,20 +49,20 @@ Upset <- function(otu, metadata = NULL, id_col = 1,
 
 
     ## Format check
-    # Check if metadata dataframe contains "sample" and "parallel"
+    # Check if metadata dataframe contains "sample" and "replicate"
     if ("sample" %in% base::tolower(colnames(metadata)) &&
-        "parallel" %in% base::tolower(colnames(metadata))) {
+        "replicate" %in% base::tolower(colnames(metadata))) {
       cat("\033[32mmetadata --> DONE\n\033[30m")
     } else {
-      stop("Please ensure that the metadata table contains the `sample` column and the `parallel` column!",
+      stop("Please ensure that the metadata table contains the `sample` column and the `replicate` column!",
            "\nsample: Sample ID (unique)",
-           "\nparallel: Parallel sample identifier")
+           "\nreplicate: replicate sample identifier")
     }
 
 
     ## Process the metadata table
-    # Extract columns "sample", "parallel", the value of the group parameter, and other relevant columns from metadata
-    metadata2 <- metadata[, c("sample", "parallel", group)]
+    # Extract columns "sample", "replicate", the value of the group parameter, and other relevant columns from metadata
+    metadata2 <- metadata[, c("sample", "replicate", group)]
 
     # For metadata, discard rows containing NA values
     na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
@@ -85,30 +85,30 @@ Upset <- function(otu, metadata = NULL, id_col = 1,
     otu2 <- otu[, keep_columns]             # Keep columns with TRUE in the logical vector
 
 
-    ## Parallel sample handling
+    ## replicate sample handling
     # Define allowed methods
     allowedMethods <- base::tolower(c("mean", "sum", "median", "none"))
 
     # Convert to lowercase
-    parallel_method <- base::tolower(parallel_method)
+    replicate_method <- base::tolower(replicate_method)
 
-    # Check the parallel sample handling method
-    if(!parallel_method %in% allowedMethods) {
-      stop("Please input a valid parallel_method parameter:\n",
-           "For handling parallel samples based on the `parallel` column in the metadata table, where samples with the same `parallel` value are considered parallel samples\n",
+    # Check the replicate sample handling method
+    if(!replicate_method %in% allowedMethods) {
+      stop("Please input a valid replicate_method parameter:\n",
+           "For handling replicate samples based on the `replicate` column in the metadata table, where samples with the same `replicate` value are considered replicate samples\n",
            "`mean`  : Take the mean\n",
            "`sum`   : Take the sum\n",
            "`median`: Take the median\n",
-           "`none`  : Do not process parallel samples\n")
+           "`none`  : Do not process replicate samples\n")
     } else {
-      cat("\033[32mParallel parallel_method: `", parallel_method, "`\n\033[30m", sep = "")
+      cat("\033[32mreplicate replicate_method: `", replicate_method, "`\n\033[30m", sep = "")
     }
 
 
 
     ##
-    # Process parallel samples
-    if (parallel_method != "none") {
+    # Process replicate samples
+    if (replicate_method != "none") {
       ## Convert to long format and left join with metadata2
       otu3 <- otu2 %>%
         # Convert the dataframe from wide to long format
@@ -118,10 +118,10 @@ Upset <- function(otu, metadata = NULL, id_col = 1,
 
 
       otu4 <- otu3 %>%
-        # Group by parallel and the first column
-        dplyr::group_by_at(dplyr::vars(names(otu3)[1], dplyr::all_of("parallel"))) %>%
-        dplyr::select(names(otu3)[1], dplyr::all_of("parallel"), dplyr::all_of(group), dplyr::all_of("abun")) %>%
-        dplyr::summarise_if(is.numeric, ~round(match.fun(parallel_method)(.), 1)) %>%
+        # Group by replicate and the first column
+        dplyr::group_by_at(dplyr::vars(names(otu3)[1], dplyr::all_of("replicate"))) %>%
+        dplyr::select(names(otu3)[1], dplyr::all_of("replicate"), dplyr::all_of(group), dplyr::all_of("abun")) %>%
+        dplyr::summarise_if(is.numeric, ~round(match.fun(replicate_method)(.), 1)) %>%
         dplyr::ungroup()
       cat("\033[32motu4 ---> DONE\n\033[30m")
 
@@ -157,17 +157,17 @@ Upset <- function(otu, metadata = NULL, id_col = 1,
 
       ## Sync metadata
       metadata3 = metadata2 %>%
-        # Keep columns "parallel" and the group column
-        dplyr::select(dplyr::all_of("parallel"), dplyr::all_of(group)) %>%
-        # Remove duplicates in the parallel column
-        dplyr::distinct(parallel, .keep_all = TRUE)
+        # Keep columns "replicate" and the group column
+        dplyr::select(dplyr::all_of("replicate"), dplyr::all_of(group)) %>%
+        # Remove duplicates in the replicate column
+        dplyr::distinct(replicate, .keep_all = TRUE)
       # Rename the first column to "sample"
       colnames(metadata3)[1] <- "sample"
 
 
 
     } else {
-      # Do not process parallel samples
+      # Do not process replicate samples
 
       otu6 = otu2
       metadata3 = metadata2

@@ -12,7 +12,7 @@ stackbar(
   tax_cla = "phylum",
   group1 = "group",
   group2 = NULL,
-  parallel_method = "mean",
+  replicate_method = "mean",
   row_n = 8
 )
 }
@@ -35,7 +35,7 @@ the grouping information in the metadata table.}
 \item{group2}{(Optional, character) Group 2 for facetting plots, please enter
 the column name of the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Parallel sample processing method,
+\item{replicate_method}{(character) replicate sample processing method,
 defaulting to mean. Options: mean (average), sum (summation), median (median).}
 
 \item{row_n}{(integer) Preserve the top N taxa (including the Nth) based on
@@ -69,12 +69,12 @@ tax = tax,                 # TAX table
 metadata = metadata,       # metadata table
 id_col = 1,                # There exists an OTU ID column (the first column).
 tax_cla = "genus",         # Cluster according to the "genus" column in the tax table.
-parallel_method = "mean",  # Parallel sample processing method: mean
+replicate_method = "mean",  # replicate sample processing method: mean
 row_n = 20)                # Preserve the top 20 taxa based on abundance,
 # and group the rest into "others".
 }
 \examples{
 \dontrun{stackbar(otu = otu, tax = tax, metadata = metadata, id_col = 1,
-group1 = "group", group2 = "group2", tax_cla = "genus", parallel_method = "mean", row_n = 20)}
+group1 = "group", group2 = "group2", tax_cla = "genus", replicate_method = "mean", row_n = 20)}
 
 }

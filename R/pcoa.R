@@ -13,7 +13,7 @@
 #' numeric.
 #' @param group (Required, character) Grouping information. please enter the column name of
 #' the grouping information in the metadata table.
-#' @param parallel_method (character) Sample processing methods for the same group:
+#' @param replicate_method (character) Sample processing methods for the same group:
 #' mean, sum, median, none.
 #'
 #' @return a list (consisting of two columns of data: plot data and the
@@ -22,12 +22,12 @@
 #'
 #' @examples
 #' \dontrun{pcoa(otu = otu, metadata = metadata, id_col = 1, group = "group",
-#'               parallel_method = "none")}
+#'               replicate_method = "none")}
 #'
 #' @importFrom vegan vegdist
 #' @importFrom stats cmdscale
 #'
-pcoa <- function(otu, metadata, id_col = 1, group = "group", parallel_method = "none")
+pcoa <- function(otu, metadata, id_col = 1, group = "group", replicate_method = "none")
 {
   # Check if the specified column exists in metadata
   if (!all(group %in% colnames(metadata))) {
@@ -39,19 +39,19 @@ pcoa <- function(otu, metadata, id_col = 1, group = "group", parallel_method = "
   }
 
   ## Format validation
-  # Check if metadata contains "sample" and "parallel"
+  # Check if metadata contains "sample" and "replicate"
   if ("sample" %in% base::tolower(colnames(metadata)) &&
-      "parallel" %in% base::tolower(colnames(metadata))) {
+      "replicate" %in% base::tolower(colnames(metadata))) {
     cat("metadata --> DONE\n")
   } else {
-    stop("Please ensure that the metadata table contains the `sample` and `parallel` columns!",
+    stop("Please ensure that the metadata table contains the `sample` and `replicate` columns!",
          "\nsample: Sample ID (unique)",
-         "\nparallel: Parallel sample identifier")
+         "\nreplicate: replicate sample identifier")
   }
 
   ## Process metadata
   # Extract relevant columns from metadata
-  metadata2 <- metadata[, c("sample", "parallel", group)]
+  metadata2 <- metadata[, c("sample", "replicate", group)]
 
   # Remove rows with NA values
   na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
@@ -71,20 +71,20 @@ pcoa <- function(otu, metadata, id_col = 1, group = "group", parallel_method = "
 
   ## Handle technical replicates
   allowedMethods <- base::tolower(c("mean", "sum", "median", "none"))
-  parallel_method <- base::tolower(parallel_method)
+  replicate_method <- base::tolower(replicate_method)
 
-  if(!parallel_method %in% allowedMethods) {
-    stop("Please enter a valid parallel_method:\n",
-         "Based on the `parallel` column in the metadata table, samples with the same `parallel` value are considered technical replicates\n",
+  if(!replicate_method %in% allowedMethods) {
+    stop("Please enter a valid replicate_method:\n",
+         "Based on the `replicate` column in the metadata table, samples with the same `replicate` value are considered technical replicates\n",
          "`mean`  : Calculate the mean\n",
          "`sum`   : Calculate the sum\n",
          "`median`: Calculate the median\n",
          "`none`  : No processing of technical replicates\n")
   } else {
-    cat("\033[32mParallel parallel_method: `", parallel_method, "`\n\033[30m", sep = "")
+    cat("\033[32mreplicate replicate_method: `", replicate_method, "`\n\033[30m", sep = "")
   }
 
-  if (parallel_method != "none") {
+  if (replicate_method != "none") {
     ## Convert to long format and merge with metadata
     otu3 <- otu2 %>%
       tidyr::gather(key = "sample", value = "abun", -1) %>%
@@ -92,9 +92,9 @@ pcoa <- function(otu, metadata, id_col = 1, group = "group", parallel_method = "
     cat("\033[32motu3 ---> DONE\n\033[30m")
 
     otu4 <- otu3 %>%
-      dplyr::group_by_at(dplyr::vars(names(otu3)[1], dplyr::all_of("parallel"))) %>%
-      dplyr::select(names(otu3)[1], dplyr::all_of("parallel"), dplyr::all_of(group), dplyr::all_of("abun")) %>%
-      dplyr::summarise_if(is.numeric, ~round(match.fun(parallel_method)(.), 1)) %>%
+      dplyr::group_by_at(dplyr::vars(names(otu3)[1], dplyr::all_of("replicate"))) %>%
+      dplyr::select(names(otu3)[1], dplyr::all_of("replicate"), dplyr::all_of(group), dplyr::all_of("abun")) %>%
+      dplyr::summarise_if(is.numeric, ~round(match.fun(replicate_method)(.), 1)) %>%
       dplyr::ungroup()
     cat("\033[32motu4 ---> DONE\n\033[30m")
 
@@ -120,8 +120,8 @@ pcoa <- function(otu, metadata, id_col = 1, group = "group", parallel_method = "
 
     ## Sync metadata
     metadata3 = metadata2 %>%
-      dplyr::select(dplyr::all_of("parallel"), dplyr::all_of(group)) %>%
-      dplyr::distinct(parallel, .keep_all = TRUE)
+      dplyr::select(dplyr::all_of("replicate"), dplyr::all_of(group)) %>%
+      dplyr::distinct(replicate, .keep_all = TRUE)
     colnames(metadata3)[1] <- "sample"
   } else {
     otu6 = otu2

@@ -9,7 +9,7 @@ venn(
   metadata = NULL,
   id_col = 1,
   group = "group",
-  parallel_method = "mean"
+  replicate_method = "mean"
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ OTU table, by default, is 1.}
 \item{group}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \value{

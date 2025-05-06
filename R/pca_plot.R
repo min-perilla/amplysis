@@ -53,7 +53,7 @@
 #' @examples
 #' \dontrun{
 #' pca1 <- pca(otu = otu, metadata = metadata, id_col = 1,group = "group",
-#'             parallel_method = "none")
+#'             replicate_method = "none")
 #'
 #' pca_plot(data = pca1,
 #'          color_scheme = c("#00b0f6", "#FFC24B", "#f8766d",

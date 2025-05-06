@@ -4,7 +4,7 @@
 \alias{nmds}
 \title{Non-metric Multi-dimensional Scaling}
 \usage{
-nmds(otu, metadata, id_col = 1, group = "group", parallel_method = "none")
+nmds(otu, metadata, id_col = 1, group = "group", replicate_method = "none")
 }
 \arguments{
 \item{otu}{otu table}
@@ -17,7 +17,7 @@ means there is no OTU_ID column, and the data is already numeric.}
 \item{group}{(Required, character) Grouping information. please enter the
 column name of the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 }
 \value{
@@ -32,6 +32,6 @@ distance and employs "vegan::metaMDS" for conducting NMDS ordination analysis.
 }
 \examples{
 \dontrun{nmds(otu = otu, metadata = metadata, id_col = 1, group = "group",
-              parallel_method = "none")}
+              replicate_method = "none")}
 
 }

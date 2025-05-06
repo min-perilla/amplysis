@@ -1,4 +1,4 @@
-sample	parallel	group	group2	group3	mouse_id	genotype	cage_id	donor	donor_status	days_post_transplant	genotype_and_donor_status
+sample	replicate	group	group2	group3	mouse_id	genotype	cage_id	donor	donor_status	days_post_transplant	genotype_and_donor_status
 recip.220.WT.OB1.D7	recip.220.WT.OB1.D7	Healthy	wild type	wild type and Healthy	457	wild type	C35	hc_1	Healthy	49	wild type and Healthy
 recip.290.ASO.OB2.D1	recip.290.ASO.OB2.D1	Healthy	susceptible	susceptible and Healthy	456	susceptible	C35	hc_1	Healthy	49	susceptible and Healthy
 recip.389.WT.HC2.D21	recip.389.WT.HC2.D21	Healthy	susceptible	susceptible and Healthy	435	susceptible	C31	hc_1	Healthy	21	susceptible and Healthy

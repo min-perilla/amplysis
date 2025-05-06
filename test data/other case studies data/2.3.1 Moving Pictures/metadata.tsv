@@ -1,4 +1,4 @@
-sample	parallel	group	group2	group3	body-site	year	month	day	subject	reported-antibiotic-usage	days-since-experiment-start
+sample	replicate	group	group2	group3	body-site	year	month	day	subject	reported-antibiotic-usage	days-since-experiment-start
 L1S8	L1S8	gut	2008/10/28	subject-1	gut	2008	10	28	subject-1	Yes	0
 L1S57	L1S57	gut	2009/1/20	subject-1	gut	2009	1	20	subject-1	No	84
 L1S105	L1S105	gut	2009/3/17	subject-1	gut	2009	3	17	subject-1	No	140

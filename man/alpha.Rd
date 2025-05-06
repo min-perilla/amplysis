@@ -9,7 +9,7 @@ alpha(
   metadata,
   id_col = 1,
   group = "group",
-  parallel_method = "none",
+  replicate_method = "none",
   tree = NULL,
   method = 1
 )
@@ -25,7 +25,7 @@ OTU table, by default, is 1.}
 \item{group}{(character) Group 1, please enter the column name of
 the grouping information in the metadata table.}
 
-\item{parallel_method}{(character) Sample processing methods for the same group:
+\item{replicate_method}{(character) Sample processing methods for the same group:
 mean, sum, median, none.}
 
 \item{tree}{Phylogenetic tree (rooted tree) file.}
@@ -59,7 +59,7 @@ The significance marking method uses the letter marking method.
 \examples{
 \dontrun{
 data <- alpha(otu, metadata, id_col = 1, group = "group",
-parallel_method = "mean", tree = tree, method = 1)
+replicate_method = "mean", tree = tree, method = 1)
 }
 
 }

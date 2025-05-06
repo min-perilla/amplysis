@@ -22,7 +22,7 @@
 #'          metadata = metadata,       # metadata table
 #'          id_col = 1,                # There exists an OTU ID column (the first column).
 #'          tax_cla = "genus",         # Cluster according to the "genus" column in the tax table.
-#'          parallel_method = "mean",  # Parallel sample processing method: mean
+#'          replicate_method = "mean",  # replicate sample processing method: mean
 #'          row_n = 20)                # Preserve the top 20 taxa based on abundance,
 #'                                     # and group the rest into "others".
 #'
@@ -37,7 +37,7 @@
 #' the grouping information in the metadata table.
 #' @param group2 (Optional, character) Group 2 for facetting plots, please enter
 #' the column name of the grouping information in the metadata table.
-#' @param parallel_method (character) Parallel sample processing method,
+#' @param replicate_method (character) replicate sample processing method,
 #' defaulting to mean. Options: mean (average), sum (summation), median (median).
 #' @param row_n (integer) Preserve the top N taxa (including the Nth) based on
 #' abundance, while merging taxa with lower abundance into "others".
@@ -47,7 +47,7 @@
 #'
 #' @examples
 #' \dontrun{stackbar(otu = otu, tax = tax, metadata = metadata, id_col = 1,
-#' group1 = "group", group2 = "group2", tax_cla = "genus", parallel_method = "mean", row_n = 20)}
+#' group1 = "group", group2 = "group2", tax_cla = "genus", replicate_method = "mean", row_n = 20)}
 #'
 #' @importFrom dplyr across arrange desc group_by group_by_at left_join mutate
 #' rename select summarise_all summarise_if vars where %>%
@@ -56,7 +56,7 @@
 # Please use tools:: showNonASCIIfile(file.R) to check for the presence of non ASCII characters.
 # tools::showNonASCIIfile(file.path(dirname(rstudioapi::getActiveDocumentContext()$path), "stackbar.R"))
 stackbar <- function(otu, tax, metadata, id_col = 1, tax_cla = "phylum",
-         group1 = "group", group2 = NULL, parallel_method = "mean", row_n = 8)
+         group1 = "group", group2 = NULL, replicate_method = "mean", row_n = 8)
 {
   if (!all(group1 %in% colnames(metadata)) ||
       !all(group2 %in% colnames(metadata))) {
@@ -70,16 +70,16 @@ stackbar <- function(otu, tax, metadata, id_col = 1, tax_cla = "phylum",
   }
 
   if ("sample" %in% base::tolower(colnames(metadata)) &&
-      "parallel" %in% base::tolower(colnames(metadata))) {
+      "replicate" %in% base::tolower(colnames(metadata))) {
     cat("metadata --> DONE\n")
   } else {
     stop("Please ensure that the metadata table contains the `sample` column and
-         the `parallel` column!",
+         the `replicate` column!",
          "\nsample: Sample ID (unique)",
-         "\nparallel: Parallel sample identifier")
+         "\nreplicate: replicate sample identifier")
   }
 
-  metadata2 <- metadata[, c("sample", "parallel", group1, group2)]
+  metadata2 <- metadata[, c("sample", "replicate", group1, group2)]
 
   na_rows <- apply(metadata2, 1, function(row) any(is.na(row)))
   if (any(na_rows)) {
@@ -92,33 +92,33 @@ stackbar <- function(otu, tax, metadata, id_col = 1, tax_cla = "phylum",
 
 
   ##
-  if(parallel_method == "mean") {
-    cat("In the `metadata` table, samples with the same `parallel` value are
-        considered parallel samples.")
-    cat("Parallel sample treatment method: mean")
+  if(replicate_method == "mean") {
+    cat("In the `metadata` table, samples with the same `replicate` value are
+        considered replicate samples.")
+    cat("replicate sample treatment method: mean")
 
-  } else if(parallel_method == "sum") {
-    cat("In the `metadata` table, samples with the same `parallel` value are
-        considered parallel samples.")
-    cat("Parallel sample treatment method: sum")
+  } else if(replicate_method == "sum") {
+    cat("In the `metadata` table, samples with the same `replicate` value are
+        considered replicate samples.")
+    cat("replicate sample treatment method: sum")
 
-  } else if(parallel_method == "median") {
-    cat("In the `metadata` table, samples with the same `parallel` value are
-        considered parallel samples.")
-    cat("Parallel sample treatment method: median")
+  } else if(replicate_method == "median") {
+    cat("In the `metadata` table, samples with the same `replicate` value are
+        considered replicate samples.")
+    cat("replicate sample treatment method: median")
 
-  } else if(parallel_method == "none") {
-    cat("No processing for parallel samples.")
+  } else if(replicate_method == "none") {
+    cat("No processing for replicate samples.")
 
   } else {
-    stop("Please enter the correct parameter for the parallel_method:\n",
-         "Process according to the `parallel` column in the `metadata` table,
-         where samples with the same `parallel` value are considered parallel
+    stop("Please enter the correct parameter for the replicate_method:\n",
+         "Process according to the `replicate` column in the `metadata` table,
+         where samples with the same `replicate` value are considered replicate
          samples.\n",
          "`mean`: Take the mean\n",
          "`sum`: Summation\n",
          "`median`: Take the median\n",
-         "`none`: No processing for parallel samples\n")
+         "`none`: No processing for replicate samples\n")
   }
 
 
@@ -216,22 +216,22 @@ stackbar <- function(otu, tax, metadata, id_col = 1, tax_cla = "phylum",
 
 
   ##
-  if (parallel_method != "none") {
+  if (replicate_method != "none") {
     otu6 <- otu5 %>%
-      dplyr::group_by_at(dplyr::vars(all_of(tax_cla), "parallel")) %>%
-      dplyr::select(all_of(tax_cla), "parallel", "abun") %>%
-      dplyr::summarise_if(is.numeric, match.fun(parallel_method)) %>%
+      dplyr::group_by_at(dplyr::vars(all_of(tax_cla), "replicate")) %>%
+      dplyr::select(all_of(tax_cla), "replicate", "abun") %>%
+      dplyr::summarise_if(is.numeric, match.fun(replicate_method)) %>%
       dplyr::ungroup()
 
     metadata3 <- metadata2[, -which(names(metadata2) == "sample")]
     metadata3 <- unique(metadata3)
-    otu6 <- merge(otu6, metadata3, by = "parallel", all.x = T, all.y = F, sort = F)
+    otu6 <- merge(otu6, metadata3, by = "replicate", all.x = T, all.y = F, sort = F)
 
-    cat("parallel_method --> DONE\n")
+    cat("replicate_method --> DONE\n")
     cat("otu6 ---> DONE\n")
   } else {
     otu6 <- otu5
-    cat("\033[31mparallel_method --> NONE\033[0m\n")
+    cat("\033[31mreplicate_method --> NONE\033[0m\n")
     cat("otu6 ---> DONE\n")
   }
 
