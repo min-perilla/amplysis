@@ -182,9 +182,12 @@ Partial example figures:
 <br>
 
 ## Additional Information
-### 1. Preparation of Data Files
+### 1. Preparing External Data for Analysis
 
-Please refer to the example files in the `test data/example data` directory on GitHub to prepare your data accordingly for analysis. For more detailed information about the data files, please refer to this article (DOI will be provided once available).
+If you already have downstream analysis files such as a feature table, taxonomy table, and representative sequences (rep-seqs), you can refer to the relevant content in this article (DOI link will be provided once available) and use the [example data files](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip) as a reference. In most cases, only minimal or no modification is needed for direct use with the `amplysis` R package.
+
+
+If you only have raw sequencing data (such as `fasta` or `fastq` files), we recommend visiting the [QIIME 2 official documentation](https://amplicon-docs.qiime2.org/en/latest/) to learn how to generate the downstream analysis data files through standard workflows.
 <br>
 
 ### 2. Using `read_data()` to Read `.biom` Files
