@@ -250,10 +250,8 @@ Please refer to the example files in the `test data/example data` directory on G
 The `read_data()` function supports reading `JSON` format `.biom` files. If you already have a `.biom` file (such as one exported from `QIIME 2`, which may be in `HDF5` format), you can convert it to `JSON` format using the following methods.
 > `read_data()` 函数支持读取 `JSON` 格式的 `.biom` 文件。如果你已经有一个 `.biom` 文件（如 `QIIME 2` 导出的 `.biom` 文件，可能是 `HDF5` 格式），你可以通过以下方法将其转换为 `JSON` 格式。
 
-#### Windows：
-
-1. Check if `biom` is already installed:
-> 1. 检查 `biom` 是否已经安装：
+- Check if `biom` is already installed:
+> - 检查 `biom` 是否已经安装：
    ```bash
    biom --version
    ```
@@ -265,32 +263,8 @@ The `read_data()` function supports reading `JSON` format `.biom` files. If you 
    pip install biom-format
    ```
 
-2. Convert the `HDF5` format `.biom` file to `JSON` format:
-> 2. 使用以下命令将 `HDF5` 格式的 `.biom` 文件转换为 `JSON` 格式：
-
-   ```bash
-   biom convert -i input_table.biom -o output_table_json.biom --to-json --table-type "OTU table"
-   ```
-<br>
-
-#### macOS：
-
-1. Check if `biom` is already installed:
-> 1. 检查 `biom` 是否已经安装：
-
-   ```bash
-   biom --version
-   ```
-
-   If not installed, use the following command to install the `biom-format` tool:
-   > 如果未安装，可以使用以下命令安装 `biom-format` 工具：
-
-   ```bash
-   pip install biom-format
-   ```
-
-2. Convert the `HDF5` format `.biom` file to `JSON` format:
-> 2. 使用以下命令将 `HDF5` 格式的 `.biom` 文件转换为 JSON 格式：
+- Convert the `HDF5` format `.biom` file to `JSON` format:
+> - 使用以下命令将 `HDF5` 格式的 `.biom` 文件转换为 `JSON` 格式：
 
    ```bash
    biom convert -i input_table.biom -o output_table_json.biom --to-json --table-type "OTU table"
