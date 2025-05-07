@@ -34,7 +34,7 @@ library(devtools)
 ```
 通过 `devtools` 安装 R 包 `amplysis`：
 ```
-devtools::install_github("min-perilla/amplysis")
+devtools::install_github("min-perilla/amplysis", upgrade = "never")
 ```
 
 ### 2. Install from a local `.tar.gz` source package
