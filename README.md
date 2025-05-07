@@ -75,7 +75,13 @@ install.packages("amplysis")
 Click [here](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip) to download the example data. 
 > 点击[这里](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip) 下载示例数据文件。
 
-> 点击下载链接后，会得到一个名为 `example_data.zip` 的压缩包。解压并打开文件夹，里面包含了一个名为 `example.R` 的测试脚本和一个 `data` 文件夹（内含 6 种类型的示例数据文件）。你可以在 `RStudio` 中打开 `example.R` 文件，全选代码并点击 `Run` 运行测试。或者，您也可以将下方的示例代码复制到 `RStudio` 中进行测试：
+After clicking the download link, you will get a compressed file named `example_data.zip`. Extract the zip file and open the folder, which contains a test script named `example.R` and a `data` directory (containing six types of example data files). 
+
+You can open the `example.R` file in RStudio, select all the code, and click `Run` to execute the test. Alternatively, you may copy the sample code below into `RStudio` for testing:
+
+> 点击下载链接后，会得到一个名为 `example_data.zip` 的压缩包。解压并打开文件夹，里面包含了一个名为 `example.R` 的测试脚本和一个 `data` 文件夹（内含 6 种类型的示例数据文件）。
+>
+> 你可以在 `RStudio` 中打开 `example.R` 文件，全选代码并点击 `Run` 运行测试。或者，您也可以将下方的示例代码复制到 `RStudio` 中进行测试：
 
 ```
 # example.R
