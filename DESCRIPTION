@@ -21,35 +21,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 LazyData: true
 biocViews:
-Imports: 
-    agricolae,
-    ape,
-    Biostrings,
-    dplyr,
-    forcats,
-    ggplot2,
-    ggrepel,
-    ggvenn,
-    igraph, 
-    phyloseq,
-    picante,
-    R6,
-    readr,
-    readxl,
-    rlang,
-    rstudioapi,
-    stringr,
-    tidyr,
-    vegan, 
-    VennDiagram
-Suggests: 
-    bit64, 
-    circlize, 
-    ggraph, 
-    grDevices, 
-    pheatmap,
-    purrr,
-    remotes, 
-    tidygraph,
-    UpSetR
+Imports: agricolae, ape, Biostrings, dplyr, forcats, ggplot2, ggrepel,
+        ggvenn, igraph, phyloseq, picante, R6, readr, readxl, rlang,
+        rstudioapi, stringr, tidyr, vegan, VennDiagram
+Suggests: bit64, circlize, ggraph, grDevices, pheatmap, purrr, remotes,
+        tidygraph, UpSetR
 Repository: CRAN
+NeedsCompilation: no
+Packaged: 2025-05-07 09:56:09 UTC; szm10
