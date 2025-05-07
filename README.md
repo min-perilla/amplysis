@@ -71,8 +71,8 @@ install.packages("amplysis")
 <br>
 
 ## Usage 使用方法
-[Download link for example data](https://github.com/min-perilla/amplysis/releases/download/latest/example.data.zip)
-> [示例数据下载链接](https://github.com/min-perilla/amplysis/releases/download/latest/example.data.zip)
+[Download link for example data](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip)
+> [示例数据下载链接](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip)
 ```
 # 清除所有变量 | Clear all variables
 rm(list = ls())
