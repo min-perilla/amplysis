@@ -73,109 +73,132 @@ install.packages("amplysis")
 ## Usage 使用方法
 [Download link for example data](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip)
 > [示例数据下载链接](https://github.com/min-perilla/amplysis/releases/download/latest/example_data.zip)
+
 ```
-# 清除所有变量 | Clear all variables
+# Clear all variables | 清除所有变量
 rm(list = ls())
 
-# 加载 amplysis | Load amplysis package
+# Load amplysis package | 加载 amplysis
 library(amplysis)
 
-# 设置工作目录 | Set working directory
+# Set working directory | 设置工作目录
 set_wd()
 
-# 加载示例数据 | Load example data
-otu = read_data("otu.csv")            # 特征表 | OTU table
-tax = read_data("tax.csv")            # 分类表 | Taxonomy table
-metadata = read_data("metadata.csv")  # 样本元数据 | Sample metadata
-rep = read_data("rep_seqs.csv")       # 代表性序列 | Representative sequences
-env = read_data("env.csv")            # 环境因子 | Environmental factors
-tree = read_data("tree_rooted.nwk")   # 系统发育树 | Phylogenetic tree
 
-# 数据预处理：分类表 | Data preprocessing: Taxonomy table
-tax = tax_separate(tax = tax, index = 2, delim = "; ")                     # 分类表数据分列 | Split taxonomy table into columns
-tax = tax_trim_prefix(tax = tax, index = c(2:8), length = 3)               # 分类表去前缀 | Remove prefixes from taxonomy table
-tax = tax_names_repair(tax = tax, column_to_check = 7, column_to_add = 3)  # 分类表信息修复 | Repair taxonomy table names
+# ------------------------------------------------------------------------------
+# Load example data | 加载示例数据
+otu = read_data("data/otu.csv")            # OTU table | 特征表
+tax = read_data("data/tax.csv")            # Taxonomy table | 分类表
+metadata = read_data("data/metadata.csv")  # Sample metadata | 样本元数据
+rep = read_data("data/rep_seqs.csv")       # Representative sequences | 代表性序列
+env = read_data("data/env.csv")            # Environmental factors | 环境因子
+tree = read_data("data/tree_rooted.nwk")   # Phylogenetic tree | 系统发育树
 
-# 数据预处理：数据抽平 | Data preprocessing: Rarefaction
+
+# ------------------------------------------------------------------------------
+# Data preprocessing: Taxonomy table | 数据预处理：分类表
+# Split taxonomy table into columns | 分类表数据分列
+tax = tax_separate(tax = tax, index = 2, delim = "; ")      
+# Remove prefixes from taxonomy table | 分类表去前缀
+tax = tax_trim_prefix(tax = tax, index = c(2:8), length = 3)
+# Repair taxonomy table names | 分类表物种注释信息优化
+tax = tax_names_repair(tax = tax, column_to_check = 7, column_to_add = 3)
+
+# Data preprocessing: Rarefaction | 数据预处理：数据抽平
 otu_tax = data_rarefy(otu, method = "phyloseq", tax_table = tax)
 
-# 拆分特征表和分类表 | Separate OTU table and taxonomy table
+# Separate OTU table and taxonomy table | 拆分特征表和分类表
 otu = otu_tax[["otu"]]
 tax = otu_tax[["tax"]]
 
-# 对齐代表性序列文件 | Align representative sequences file
+# Align representative sequences file | 对齐代表性序列文件
 otu_rep = merge(x = otu, y = rep, by = "#OTU ID", all.x = T, sort = F)
 
-# 拆分特征表和代表性序列文件 | Separate OTU table and representative sequences
+# Separate OTU table and representative sequences | 拆分特征表和代表性序列文件
 rep = otu_rep[, c(1, ncol(otu_rep))]
 otu = otu_rep[, -c(ncol(otu_rep))]
 
-# -----------------------------------------
-# 数据分析与可视化 | Data Analysis & Visualization
 
-# 物种堆叠图分析（门水平） | Stacked bar plot analysis (Phylum level)
+# ------------------------------------------------------------------------------
+# Data Analysis & Visualization | 数据分析与可视化
+
+# Stacked bar plot analysis (Phylum level) | 物种堆叠图分析（门水平）
 data_sta_p = stackbar(otu, tax, metadata, tax_cla = "phylum", group1 = "group", group2 = "group2", row_n = 8)
-# 可视化 | Visualization
+# Visualization | 可视化
 stackbar_plot(data_sta_p, tax_cla = "phylum", title_legend = "Top 8 Phyla")
 
-# 物种堆叠图分析（属水平） | Stacked bar plot analysis (Genus level)
+
+# Stacked bar plot analysis (Genus level) | 物种堆叠图分析（属水平）
 data_sta_g = stackbar(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 20)
-# 可视化 | Visualization
+# Visualization | 可视化
 stackbar_plot(data_sta_g, tax_cla = "genus", title_legend = "Top 20 Genera")
 
-# 弦图（门水平） | Chord diagram (Phylum level)
+
+# Chord diagram (Phylum level) | 弦图（门水平）
 data_chord = chord(otu, metadata, tax, tax_cla = "phylum", group = "group2", row_n = 8)
-# 可视化 | Visualization
+# Visualization | 可视化
 chord_plot(data_chord)
 
-# 韦恩图 | Venn diagram
+
+# Venn diagram | 韦恩图
 data_venn = venn(otu, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 venn_plot(data_venn)
 
-# 集合图 | Upset plot
+
+# Upset plot | 集合图
 data_upset = Upset(otu, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 Upset_plot(data_upset)
 
-# 箱线图（Alpha 多样性分析） | Boxplot (Alpha diversity analysis)
+
+# Boxplot (Alpha diversity analysis) | 箱线图（Alpha 多样性分析）
 data_alpha = alpha(otu, metadata, group = "group2", tree = tree)
-# 可视化 | Visualization
+# Visualization | 可视化
 alpha_plot(data_alpha)
 
-# PCA | Principal Component Analysis (PCA)
+
+# Principal Component Analysis (PCA) | 主成分分析（PCA）
 data_pca = pca(otu, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 pca_plot(data_pca)
 
-# PCoA | Principal Coordinates Analysis (PCoA)
+
+# Principal Coordinates Analysis (PCoA) | 主坐标分析（PCoA）
 data_pcoa = pcoa(otu, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 pcoa_plot(data_pcoa)
 
-# NMDS | Non-metric Multidimensional Scaling (NMDS)
+
+# Non-metric Multidimensional Scaling (NMDS) | 非度量多维尺度分析（NMDS）
 data_nmds = nmds(otu, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 nmds_plot(data_nmds)
 
-# RDA | Redundancy Analysis (RDA)
+
+# Redundancy Analysis (RDA) | 冗余分析（RDA）
 data_rda = RDA(otu, env, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 RDA_plot(data_rda)
 
-# CCA | Canonical Correspondence Analysis (CCA)
+
+# Canonical Correspondence Analysis (CCA) | 典型对应分析（CCA）
 data_cca = CCA(otu, env, metadata, group = "group2")
-# 可视化 | Visualization
+# Visualization | 可视化
 CCA_plot(data_cca)
 
-# 热图 | Heatmap
+
+# Heatmap | 热图
 data_heatmap = heatmap(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 30)
-# 可视化 | Visualization
+# Visualization | 可视化
 heatmap_plot(data_heatmap, fontsize_col = 14, file_height = 10, file_width = 12)
 
-# 共现性网络分析 | Co-occurrence network analysis
+
+# Co-occurrence network analysis | 共现性网络分析
+# Visualization using Gephi is recommended | 推荐使用 Gephi 软件可视化
 data_net = network(otu, tax, metadata, tax_cla = "genus")
 data_net
+
 ```
 
 Partial example figures:
