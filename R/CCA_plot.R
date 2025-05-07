@@ -62,14 +62,14 @@
 #'          spacing_legend_title = 0.5, legend_ncol = 1, label_is = T,
 #'          size_label = 5, label_font_color = NULL, ellipse_type = "t",
 #'
-#'          title = "RDA", title_sub = NULL, title_legend = "Group",
+#'          title = "CCA", title_sub = NULL, title_legend = "Group",
 #'
 #'          size_title = 28, size_title_sub = 16, size_title_x = 20,
 #'          size_title_y = 20, size_title_legend = 24,
 #'
 #'          size_x = 16, size_y = 16, size_legend = 16,
 #'
-#'          filename = "RDA", file_width = 12, file_height = 9)
+#'          filename = "CCA", file_width = 12, file_height = 9)
 #' }
 #'
 #' @importFrom dplyr arrange
@@ -83,7 +83,7 @@ CCA_plot = function(data, color_scheme = NULL, custom_order = NULL, seed = 123,
                     spacing_legend_title = 0.5, legend_ncol = 1, label_is = T,
                     size_label = 5, label_font_color = NULL, ellipse_type = "t",
 
-                    title = "RDA", title_sub = NULL, title_legend = "Group",
+                    title = "CCA", title_sub = NULL, title_legend = "Group",
 
                     size_title = 28, size_title_sub = 16, size_title_x = 20,
                     size_title_y = 20, size_title_legend = 24,
