@@ -1,0 +1,49 @@
+sample	replicate	group	group2	group3	mouse_id	genotype	cage_id	donor	donor_status	days_post_transplant	genotype_and_donor_status
+recip.220.WT.OB1.D7	recip.220.WT.OB1.D7	Healthy	wild type	wild type and Healthy	457	wild type	C35	hc_1	Healthy	49	wild type and Healthy
+recip.290.ASO.OB2.D1	recip.290.ASO.OB2.D1	Healthy	susceptible	susceptible and Healthy	456	susceptible	C35	hc_1	Healthy	49	susceptible and Healthy
+recip.389.WT.HC2.D21	recip.389.WT.HC2.D21	Healthy	susceptible	susceptible and Healthy	435	susceptible	C31	hc_1	Healthy	21	susceptible and Healthy
+recip.391.ASO.PD2.D14	recip.391.ASO.PD2.D14	Healthy	susceptible	susceptible and Healthy	435	susceptible	C31	hc_1	Healthy	14	susceptible and Healthy
+recip.391.ASO.PD2.D21	recip.391.ASO.PD2.D21	Healthy	susceptible	susceptible and Healthy	437	susceptible	C31	hc_1	Healthy	21	susceptible and Healthy
+recip.391.ASO.PD2.D7	recip.391.ASO.PD2.D7	Healthy	susceptible	susceptible and Healthy	435	susceptible	C31	hc_1	Healthy	7	susceptible and Healthy
+recip.400.ASO.HC2.D14	recip.400.ASO.HC2.D14	Healthy	susceptible	susceptible and Healthy	437	susceptible	C31	hc_1	Healthy	14	susceptible and Healthy
+recip.401.ASO.HC2.D7	recip.401.ASO.HC2.D7	Healthy	susceptible	susceptible and Healthy	437	susceptible	C31	hc_1	Healthy	7	susceptible and Healthy
+recip.403.ASO.PD2.D21	recip.403.ASO.PD2.D21	Healthy	susceptible	susceptible and Healthy	456	susceptible	C35	hc_1	Healthy	21	susceptible and Healthy
+recip.411.ASO.HC2.D14	recip.411.ASO.HC2.D14	Healthy	susceptible	susceptible and Healthy	456	susceptible	C35	hc_1	Healthy	14	susceptible and Healthy
+recip.411.ASO.HC2.D21	recip.411.ASO.HC2.D21	Healthy	wild type	wild type and Healthy	457	wild type	C35	hc_1	Healthy	21	wild type and Healthy
+recip.411.ASO.HC2.D49	recip.411.ASO.HC2.D49	Healthy	susceptible	susceptible and Healthy	435	susceptible	C31	hc_1	Healthy	49	susceptible and Healthy
+recip.412.ASO.HC2.D14	recip.412.ASO.HC2.D14	Healthy	wild type	wild type and Healthy	457	wild type	C35	hc_1	Healthy	14	wild type and Healthy
+recip.412.ASO.HC2.D7	recip.412.ASO.HC2.D7	Healthy	susceptible	susceptible and Healthy	456	susceptible	C35	hc_1	Healthy	7	susceptible and Healthy
+recip.413.WT.HC2.D7	recip.413.WT.HC2.D7	Healthy	wild type	wild type and Healthy	457	wild type	C35	hc_1	Healthy	7	wild type and Healthy
+recip.456.ASO.HC3.D49	recip.456.ASO.HC3.D49	Healthy	wild type	wild type and Healthy	468	wild type	C42	hc_1	Healthy	49	wild type and Healthy
+recip.458.ASO.HC3.D21	recip.458.ASO.HC3.D21	Healthy	wild type	wild type and Healthy	468	wild type	C42	hc_1	Healthy	21	wild type and Healthy
+recip.458.ASO.HC3.D49	recip.458.ASO.HC3.D49	Healthy	wild type	wild type and Healthy	469	wild type	C42	hc_1	Healthy	49	wild type and Healthy
+recip.459.WT.HC3.D14	recip.459.WT.HC3.D14	Healthy	wild type	wild type and Healthy	468	wild type	C42	hc_1	Healthy	14	wild type and Healthy
+recip.459.WT.HC3.D21	recip.459.WT.HC3.D21	Healthy	wild type	wild type and Healthy	469	wild type	C42	hc_1	Healthy	21	wild type and Healthy
+recip.459.WT.HC3.D49	recip.459.WT.HC3.D49	PD	susceptible	susceptible and PD	536	susceptible	C43	pd_1	PD	49	susceptible and PD
+recip.460.WT.HC3.D14	recip.460.WT.HC3.D14	Healthy	wild type	wild type and Healthy	469	wild type	C42	hc_1	Healthy	14	wild type and Healthy
+recip.460.WT.HC3.D21	recip.460.WT.HC3.D21	PD	susceptible	susceptible and PD	536	susceptible	C43	pd_1	PD	21	susceptible and PD
+recip.460.WT.HC3.D49	recip.460.WT.HC3.D49	PD	wild type	wild type and PD	537	wild type	C43	pd_1	PD	49	wild type and PD
+recip.460.WT.HC3.D7	recip.460.WT.HC3.D7	Healthy	wild type	wild type and Healthy	468	wild type	C42	hc_1	Healthy	7	wild type and Healthy
+recip.461.ASO.HC3.D21	recip.461.ASO.HC3.D21	PD	wild type	wild type and PD	537	wild type	C43	pd_1	PD	21	wild type and PD
+recip.461.ASO.HC3.D49	recip.461.ASO.HC3.D49	PD	wild type	wild type and PD	538	wild type	C44	pd_1	PD	49	wild type and PD
+recip.461.ASO.HC3.D7	recip.461.ASO.HC3.D7	Healthy	wild type	wild type and Healthy	469	wild type	C42	hc_1	Healthy	7	wild type and Healthy
+recip.462.WT.PD3.D14	recip.462.WT.PD3.D14	PD	susceptible	susceptible and PD	536	susceptible	C43	pd_1	PD	14	susceptible and PD
+recip.462.WT.PD3.D21	recip.462.WT.PD3.D21	PD	wild type	wild type and PD	538	wild type	C44	pd_1	PD	21	wild type and PD
+recip.462.WT.PD3.D49	recip.462.WT.PD3.D49	PD	susceptible	susceptible and PD	539	susceptible	C44	pd_1	PD	49	susceptible and PD
+recip.462.WT.PD3.D7	recip.462.WT.PD3.D7	PD	susceptible	susceptible and PD	536	susceptible	C43	pd_1	PD	7	susceptible and PD
+recip.463.WT.PD3.D14	recip.463.WT.PD3.D14	PD	wild type	wild type and PD	537	wild type	C43	pd_1	PD	14	wild type and PD
+recip.463.WT.PD3.D21	recip.463.WT.PD3.D21	PD	susceptible	susceptible and PD	539	susceptible	C44	pd_1	PD	21	susceptible and PD
+recip.463.WT.PD3.D7	recip.463.WT.PD3.D7	PD	wild type	wild type and PD	537	wild type	C43	pd_1	PD	7	wild type and PD
+recip.464.WT.PD3.D14	recip.464.WT.PD3.D14	PD	wild type	wild type and PD	538	wild type	C44	pd_1	PD	14	wild type and PD
+recip.465.ASO.PD3.D14	recip.465.ASO.PD3.D14	PD	susceptible	susceptible and PD	539	susceptible	C44	pd_1	PD	14	susceptible and PD
+recip.465.ASO.PD3.D7	recip.465.ASO.PD3.D7	PD	wild type	wild type and PD	538	wild type	C44	pd_1	PD	7	wild type and PD
+recip.466.ASO.PD3.D7	recip.466.ASO.PD3.D7	PD	susceptible	susceptible and PD	539	susceptible	C44	pd_1	PD	7	susceptible and PD
+recip.467.WT.HC3.D49.a	recip.467.WT.HC3.D49.a	Healthy	susceptible	susceptible and Healthy	437	susceptible	C31	hc_1	Healthy	49	susceptible and Healthy
+recip.467.WT.HC3.D49.b	recip.467.WT.HC3.D49.b	PD	susceptible	susceptible and PD	546	susceptible	C49	pd_1	PD	49	susceptible and PD
+recip.536.ASO.PD4.D49	recip.536.ASO.PD4.D49	PD	wild type	wild type and PD	547	wild type	C49	pd_1	PD	49	wild type and PD
+recip.537.WT.PD4.D21	recip.537.WT.PD4.D21	PD	susceptible	susceptible and PD	546	susceptible	C49	pd_1	PD	21	susceptible and PD
+recip.538.WT.PD4.D21	recip.538.WT.PD4.D21	PD	wild type	wild type and PD	547	wild type	C49	pd_1	PD	21	wild type and PD
+recip.539.ASO.PD4.D14	recip.539.ASO.PD4.D14	PD	susceptible	susceptible and PD	546	susceptible	C49	pd_1	PD	14	susceptible and PD
+recip.539.ASO.PD4.D7	recip.539.ASO.PD4.D7	PD	susceptible	susceptible and PD	546	susceptible	C49	pd_1	PD	7	susceptible and PD
+recip.540.ASO.HC4.D14	recip.540.ASO.HC4.D14	PD	wild type	wild type and PD	547	wild type	C49	pd_1	PD	14	wild type and PD
+recip.540.ASO.HC4.D7	recip.540.ASO.HC4.D7	PD	wild type	wild type and PD	547	wild type	C49	pd_1	PD	7	wild type and PD
