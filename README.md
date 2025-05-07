@@ -177,7 +177,7 @@ data_net
 
 Partial example figures:
 
-![image](https://github.com/user-attachments/assets/1a2e6ba6-6e1f-4846-97f7-81332c1d14b9)
+![example](https://github.com/user-attachments/assets/9d722668-3e6f-4bd5-a1c3-894264c9cbd5)
 
 <br>
 
