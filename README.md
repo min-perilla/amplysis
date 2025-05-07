@@ -69,9 +69,9 @@ Click [here](https://github.com/min-perilla/amplysis/releases/download/latest/ex
 * `example data` folder (contains all types of example datasets)
 * `other case studies data` folder (contains additional test datasets)
 
-To test the `read_data()` function, open the `test_readData.R` file in `RStudio`, select all the code, and click `Run` You will see how `read_data()` easily reads various types of data files.
+To test the `read_data()` function, open the `test_readData.R` file in `RStudio`, select all the code, and click `Run`. You will see how `read_data()` easily reads various types of data files.
 
-To test the core functionality of `amplysis`, open the `test.R` file in `RStudio` select all the code, and click `Run` You will see how the `amplysis` package quickly analyzes data and generates high-quality visualizations.
+To test the core functionality of `amplysis`, open the `test.R` file in `RStudio` select all the code, and click `Run`. You will see how the `amplysis` package quickly analyzes data and generates high-quality visualizations.
 
 Alternatively, you can copy and paste the example code below into `RStudio` to try it out (Make sure the working directory is set properly):
 
