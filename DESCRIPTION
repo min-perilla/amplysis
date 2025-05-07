@@ -2,7 +2,7 @@ Package: amplysis
 Type: Package
 Title: An R package for rapid analysis of 16S amplicon sequencing data
 Version: 1.3.2
-Date/Publication: 2025-05-06
+Date/Publication: 2025-05-07
 Authors@R: c(person("Z.", "Su", email = "Minpilot@outlook.com", role = c("aut", "cre", "cph"), comment = c(ORCID = "")), 
              person("X.", "Zhang", email = "", role = c("aut", "ctb", "cph"), comment = c(ORCID = "")), 
              person("Y.", "Liu", email = "", role = c("aut", "cph", "ctb", "fnd"), comment = c(ORCID = "")),
@@ -28,4 +28,4 @@ Suggests: bit64, circlize, ggraph, grDevices, pheatmap, purrr, remotes,
         tidygraph, UpSetR
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2025-05-07 09:56:09 UTC; szm10
+Packaged: 2025-05-07 11:30:21 UTC; szm10
