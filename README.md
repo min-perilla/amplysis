@@ -99,105 +99,77 @@ tree = read_data("./example data/tree/tree_rooted.nwk")  # Phylogenetic tree
 
 # ------------------------------------------------------------------------------
 # Data preprocessing: Taxonomy table
-# Split taxonomy table into columns
-tax = tax_separate(tax = tax, index = 2, delim = "; ")      
-# Remove prefixes from taxonomy table
-tax = tax_trim_prefix(tax = tax, index = c(2:8), length = 3)
-# Repair taxonomy table names
-tax = tax_names_repair(tax = tax, column_to_check = 7, column_to_add = 3)
+tax = tax_separate(tax = tax, index = 2, delim = "; ")                     # Split taxonomy table into columns 
+tax = tax_trim_prefix(tax = tax, index = c(2:8), length = 3)               # Split taxonomy table into columns
+tax = tax_names_repair(tax = tax, column_to_check = 7, column_to_add = 3)  # Optimization of taxonomic annotation in the taxonomy table
 
-# Data preprocessing: Rarefaction | 数据预处理：数据抽平
+# Data preprocessing: Rarefaction
 otu_tax = data_rarefy(otu, method = "phyloseq", tax_table = tax)
 
-# Separate OTU table and taxonomy table | 拆分特征表和分类表
+# Separate OTU table and taxonomy table
 otu = otu_tax[["otu"]]
 tax = otu_tax[["tax"]]
 
-# Align representative sequences file | 对齐代表性序列文件
+# Align representative sequences file
 otu_rep = merge(x = otu, y = rep, by = "#OTU ID", all.x = T, sort = F)
 
-# Separate OTU table and representative sequences | 拆分特征表和代表性序列文件
+# Separate OTU table and representative sequences
 rep = otu_rep[, c(1, ncol(otu_rep))]
 otu = otu_rep[, -c(ncol(otu_rep))]
 
 
 # ------------------------------------------------------------------------------
-# Data Analysis & Visualization | 数据分析与可视化
-
-# Stacked bar plot analysis (Phylum level) | 物种堆叠图分析（门水平）
+# Data Analysis & Visualization
+# Stacked bar plot analysis (Phylum level)
 data_sta_p = stackbar(otu, tax, metadata, tax_cla = "phylum", group1 = "group", group2 = "group2", row_n = 8)
-# Visualization | 可视化
-stackbar_plot(data_sta_p, tax_cla = "phylum", title_legend = "Top 8 Phyla")
+stackbar_plot(data_sta_p, tax_cla = "phylum", title_legend = "Top 8 Phyla")  # Visualization
 
-
-# Stacked bar plot analysis (Genus level) | 物种堆叠图分析（属水平）
+# Stacked bar plot analysis (Genus level)
 data_sta_g = stackbar(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 20)
-# Visualization | 可视化
-stackbar_plot(data_sta_g, tax_cla = "genus", title_legend = "Top 20 Genera")
+stackbar_plot(data_sta_g, tax_cla = "genus", title_legend = "Top 20 Genera")  # Visualization
 
-
-# Chord diagram (Phylum level) | 弦图（门水平）
+# Chord diagram (Phylum level)
 data_chord = chord(otu, metadata, tax, tax_cla = "phylum", group = "group2", row_n = 8)
-# Visualization | 可视化
-chord_plot(data_chord)
+chord_plot(data_chord)  # Visualization
 
-
-# Venn diagram | 韦恩图
+# Venn diagram
 data_venn = venn(otu, metadata, group = "group2")
-# Visualization | 可视化
-venn_plot(data_venn)
+venn_plot(data_venn)  # Visualization
 
-
-# Upset plot | 集合图
+# Upset plot
 data_upset = Upset(otu, metadata, group = "group2")
-# Visualization | 可视化
-Upset_plot(data_upset)
+Upset_plot(data_upset)  # Visualization
 
-
-# Boxplot (Alpha diversity analysis) | 箱线图（Alpha 多样性分析）
+# Boxplot (Alpha diversity analysis)
 data_alpha = alpha(otu, metadata, group = "group2", tree = tree)
-# Visualization | 可视化
-alpha_plot(data_alpha)
+alpha_plot(data_alpha)  # Visualization
 
-
-# Principal Component Analysis (PCA) | 主成分分析（PCA）
+# Principal Component Analysis (PCA)
 data_pca = pca(otu, metadata, group = "group2")
-# Visualization | 可视化
-pca_plot(data_pca)
+pca_plot(data_pca)  # Visualization
 
-
-# Principal Coordinates Analysis (PCoA) | 主坐标分析（PCoA）
+# Principal Coordinates Analysis (PCoA)
 data_pcoa = pcoa(otu, metadata, group = "group2")
-# Visualization | 可视化
-pcoa_plot(data_pcoa)
+pcoa_plot(data_pcoa)  # Visualization
 
-
-# Non-metric Multidimensional Scaling (NMDS) | 非度量多维尺度分析（NMDS）
+# Non-metric Multidimensional Scaling (NMDS)
 data_nmds = nmds(otu, metadata, group = "group2")
-# Visualization | 可视化
-nmds_plot(data_nmds)
+nmds_plot(data_nmds)  # Visualization
 
-
-# Redundancy Analysis (RDA) | 冗余分析（RDA）
+# Redundancy Analysis (RDA)
 data_rda = RDA(otu, env, metadata, group = "group2")
-# Visualization | 可视化
-RDA_plot(data_rda)
+RDA_plot(data_rda)  # Visualization
 
-
-# Canonical Correspondence Analysis (CCA) | 典型对应分析（CCA）
+# Canonical Correspondence Analysis (CCA)
 data_cca = CCA(otu, env, metadata, group = "group2")
-# Visualization | 可视化
-CCA_plot(data_cca)
+CCA_plot(data_cca)  # Visualization
 
-
-# Heatmap | 热图
+# Heatmap
 data_heatmap = heatmap(otu, tax, metadata, tax_cla = "genus", group1 = "group", group2 = "group2", row_n = 30)
-# Visualization | 可视化
-heatmap_plot(data_heatmap, fontsize_col = 14, file_height = 10, file_width = 12)
+heatmap_plot(data_heatmap, fontsize_col = 14, file_height = 10, file_width = 12)  # Visualization
 
-
-# Co-occurrence network analysis | 共现性网络分析
-# Visualization using Gephi is recommended | 推荐使用 Gephi 软件可视化
+# Co-occurrence network analysis
+# Visualization using Gephi is recommended
 data_net = network(otu, tax, metadata, tax_cla = "genus")
 data_net
 ```
