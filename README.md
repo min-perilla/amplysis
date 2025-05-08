@@ -225,7 +225,7 @@ Warning messages:
 Although these warnings may appear, the file can still be read correctly. Rest assured, this issue will be resolved in a future update.
 <br>
 
-### 3. About the data_rarefy() function 
+### 3. About the `data_rarefy()` function 
 
 The R package provides a function `data_rarefy()` for data rarefaction. It integrates the `rrarefy()` function from the `vegan` package or the `rarefy_even_depth()` function from the `phyloseq` package for data rarefaction.  
 
